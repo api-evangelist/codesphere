@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/codesphere-openapi-original.json
+docs: https://docs.codesphere.com/user-settings/api-keys
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  token_model: Personal Access Token (PAT)
+  header: 'Authorization: Bearer <token>'
+  token_source: https://docs.codesphere.com/user-settings/api-keys
+  notes: >-
+    Tokens are generated in User Settings > API Keys and shown once; the `cs`
+    CLI reads the same token from the CS_TOKEN environment variable.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/codesphere-openapi-original.json
