@@ -1,0 +1,3230 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters managed-services API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: managed-services
+paths:
+  /managed-services/providers:
+    get:
+      summary: listProviders
+      tags:
+      - managed-services
+      parameters:
+      - name: teamId
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  anyOf:
+                  - type: object
+                    properties:
+                      name:
+                        title: ProviderName
+                        pattern: ^[a-z0-9-_]+$
+                        type: string
+                      version:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      schemaVersion:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      scope:
+                        type: string
+                        enum:
+                        - global
+                        - team
+                      author:
+                        type: string
+                      backups:
+                        type: object
+                        properties:
+                          configSchema:
+                            type: object
+                            description: JSON Schema
+                          secretsSchema:
+                            type: object
+                            description: JSON Schema
+                        required:
+                        - configSchema
+                        - secretsSchema
+                      capabilities:
+                        type: object
+                        properties:
+                          pause:
+                            type: boolean
+                          backups:
+                            type: boolean
+                          pointInTimeRecovery:
+                            type: boolean
+                      category:
+                        type: string
+                      description:
+                        type: string
+                      displayName:
+                        type: string
+                      iconUrl:
+                        type: string
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      detailsSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                      plans:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              minimum: 0
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            parameters:
+                              type: object
+                              additionalProperties:
+                                type: object
+                                properties:
+                                  pricedAs:
+                                    type: string
+                                    enum:
+                                    - cpu-tenths
+                                    - free
+                                    - network-bandwidth-mbps
+                                    - ram-mib
+                                    - replicas
+                                    - storage-mib
+                                  schema:
+                                    type: object
+                                    description: JSON Schema
+                                required:
+                                - schema
+                          required:
+                          - id
+                          - name
+                          - description
+                          - parameters
+                      versions:
+                        example:
+                          0.0.1:
+                            ciProfile: debug
+                            gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                            description: Initial release
+                          1.0.0-rc:
+                            appVersion: Nextcloud v33
+                            ciProfile: prod
+                            gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                            description: Release Candidate. Added feature X, Y and Z
+                          1.0.0:
+                            appVersion: Nextcloud v33
+                            ciProfile: prod
+                            gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                            description: Long Term Support Release
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            gitRef:
+                              type: string
+                            ciProfile:
+                              type: string
+                            appVersion:
+                              type: string
+                            description:
+                              type: string
+                          required:
+                          - gitRef
+                          - ciProfile
+                        propertyNames:
+                          title: SemVer
+                          type: string
+                          description: A semantic version number
+                          example: 1.0.0
+                      backend:
+                        type: object
+                        properties:
+                          landscape:
+                            type: object
+                            properties:
+                              gitUrl:
+                                type: string
+                              ciProfile:
+                                type: string
+                                deprecated: true
+                                description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                            required:
+                            - gitUrl
+                        required:
+                        - landscape
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - name
+                    - version
+                    - schemaVersion
+                    - author
+                    - category
+                    - description
+                    - displayName
+                    - iconUrl
+                    - configSchema
+                    - detailsSchema
+                    - secretsSchema
+                    - plans
+                    - backend
+                  - type: object
+                    properties:
+                      name:
+                        title: ProviderName
+                        pattern: ^[a-z0-9-_]+$
+                        type: string
+                      version:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      schemaVersion:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      scope:
+                        type: string
+                        enum:
+                        - global
+                        - team
+                      author:
+                        type: string
+                      backups:
+                        type: object
+                        properties:
+                          configSchema:
+                            type: object
+                            description: JSON Schema
+                          secretsSchema:
+                            type: object
+                            description: JSON Schema
+                        required:
+                        - configSchema
+                        - secretsSchema
+                      capabilities:
+                        type: object
+                        properties:
+                          pause:
+                            type: boolean
+                          backups:
+                            type: boolean
+                          pointInTimeRecovery:
+                            type: boolean
+                      category:
+                        type: string
+                      description:
+                        type: string
+                      displayName:
+                        type: string
+                      iconUrl:
+                        type: string
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      detailsSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                      plans:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              minimum: 0
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            parameters:
+                              type: object
+                              additionalProperties:
+                                type: object
+                                properties:
+                                  pricedAs:
+                                    type: string
+                                    enum:
+                                    - cpu-tenths
+                                    - free
+                                    - network-bandwidth-mbps
+                                    - ram-mib
+                                    - replicas
+                                    - storage-mib
+                                  schema:
+                                    type: object
+                                    description: JSON Schema
+                                required:
+                                - schema
+                          required:
+                          - id
+                          - name
+                          - description
+                          - parameters
+                      versions:
+                        example:
+                          0.0.1:
+                            ciProfile: debug
+                            gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                            description: Initial release
+                          1.0.0-rc:
+                            appVersion: Nextcloud v33
+                            ciProfile: prod
+                            gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                            description: Release Candidate. Added feature X, Y and Z
+                          1.0.0:
+                            appVersion: Nextcloud v33
+                            ciProfile: prod
+                            gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                            description: Long Term Support Release
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            gitRef:
+                              type: string
+                            ciProfile:
+                              type: string
+                            appVersion:
+                              type: string
+                            description:
+                              type: string
+                          required:
+                          - gitRef
+                          - ciProfile
+                        propertyNames:
+                          title: SemVer
+                          type: string
+                          description: A semantic version number
+                          example: 1.0.0
+                      backend:
+                        type: object
+                        properties:
+                          api:
+                            type: object
+                            properties:
+                              endpoint:
+                                type: string
+                              secret:
+                                type: string
+                            required:
+                            - endpoint
+                        required:
+                        - api
+                    required:
+                    - name
+                    - version
+                    - schemaVersion
+                    - author
+                    - category
+                    - description
+                    - displayName
+                    - iconUrl
+                    - configSchema
+                    - detailsSchema
+                    - secretsSchema
+                    - plans
+                    - backend
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-listProviders
+    post:
+      summary: createProvider
+      tags:
+      - managed-services
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              anyOf:
+              - type: object
+                properties:
+                  author:
+                    type: string
+                  backups:
+                    type: object
+                    properties:
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                    required:
+                    - configSchema
+                    - secretsSchema
+                  capabilities:
+                    type: object
+                    properties:
+                      pause:
+                        type: boolean
+                      backups:
+                        type: boolean
+                      pointInTimeRecovery:
+                        type: boolean
+                  category:
+                    type: string
+                  description:
+                    type: string
+                  displayName:
+                    type: string
+                  iconUrl:
+                    type: string
+                  configSchema:
+                    type: object
+                    description: JSON Schema
+                  detailsSchema:
+                    type: object
+                    description: JSON Schema
+                  secretsSchema:
+                    type: object
+                    description: JSON Schema
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              pricedAs:
+                                type: string
+                                enum:
+                                - cpu-tenths
+                                - free
+                                - network-bandwidth-mbps
+                                - ram-mib
+                                - replicas
+                                - storage-mib
+                              schema:
+                                type: object
+                                description: JSON Schema
+                            required:
+                            - schema
+                      required:
+                      - id
+                      - name
+                      - description
+                      - parameters
+                  versions:
+                    example:
+                      0.0.1:
+                        ciProfile: debug
+                        gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                        description: Initial release
+                      1.0.0-rc:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                        description: Release Candidate. Added feature X, Y and Z
+                      1.0.0:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                        description: Long Term Support Release
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        gitRef:
+                          type: string
+                        ciProfile:
+                          type: string
+                        appVersion:
+                          type: string
+                        description:
+                          type: string
+                      required:
+                      - gitRef
+                      - ciProfile
+                    propertyNames:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  name:
+                    title: ProviderName
+                    pattern: ^[a-z0-9-_]+$
+                    type: string
+                  version:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  schemaVersion:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  backend:
+                    type: object
+                    properties:
+                      landscape:
+                        type: object
+                        properties:
+                          gitUrl:
+                            type: string
+                          ciProfile:
+                            type: string
+                            deprecated: true
+                            description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                        required:
+                        - gitUrl
+                    required:
+                    - landscape
+                  scope:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - global
+                      required:
+                      - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - team
+                        teamIds:
+                          type: array
+                          items:
+                            type: integer
+                            minimum: 0
+                      required:
+                      - type
+                      - teamIds
+                required:
+                - author
+                - category
+                - description
+                - displayName
+                - iconUrl
+                - configSchema
+                - detailsSchema
+                - secretsSchema
+                - plans
+                - name
+                - backend
+              - type: object
+                properties:
+                  gitUrl:
+                    type: string
+                  gitRef:
+                    type: string
+                  scope:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - global
+                      required:
+                      - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - team
+                        teamIds:
+                          type: array
+                          items:
+                            type: integer
+                            minimum: 0
+                      required:
+                      - type
+                      - teamIds
+                required:
+                - gitUrl
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    title: ProviderName
+                    pattern: ^[a-z0-9-_]+$
+                    type: string
+                  version:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  schemaVersion:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  scope:
+                    type: string
+                    enum:
+                    - global
+                    - team
+                  author:
+                    type: string
+                  backups:
+                    type: object
+                    properties:
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                    required:
+                    - configSchema
+                    - secretsSchema
+                  capabilities:
+                    type: object
+                    properties:
+                      pause:
+                        type: boolean
+                      backups:
+                        type: boolean
+                      pointInTimeRecovery:
+                        type: boolean
+                  category:
+                    type: string
+                  description:
+                    type: string
+                  displayName:
+                    type: string
+                  iconUrl:
+                    type: string
+                  configSchema:
+                    type: object
+                    description: JSON Schema
+                  detailsSchema:
+                    type: object
+                    description: JSON Schema
+                  secretsSchema:
+                    type: object
+                    description: JSON Schema
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              pricedAs:
+                                type: string
+                                enum:
+                                - cpu-tenths
+                                - free
+                                - network-bandwidth-mbps
+                                - ram-mib
+                                - replicas
+                                - storage-mib
+                              schema:
+                                type: object
+                                description: JSON Schema
+                            required:
+                            - schema
+                      required:
+                      - id
+                      - name
+                      - description
+                      - parameters
+                  versions:
+                    example:
+                      0.0.1:
+                        ciProfile: debug
+                        gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                        description: Initial release
+                      1.0.0-rc:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                        description: Release Candidate. Added feature X, Y and Z
+                      1.0.0:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                        description: Long Term Support Release
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        gitRef:
+                          type: string
+                        ciProfile:
+                          type: string
+                        appVersion:
+                          type: string
+                        description:
+                          type: string
+                      required:
+                      - gitRef
+                      - ciProfile
+                    propertyNames:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  backend:
+                    type: object
+                    properties:
+                      landscape:
+                        type: object
+                        properties:
+                          gitUrl:
+                            type: string
+                          ciProfile:
+                            type: string
+                            deprecated: true
+                            description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                        required:
+                        - gitUrl
+                    required:
+                    - landscape
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - name
+                - version
+                - schemaVersion
+                - author
+                - category
+                - description
+                - displayName
+                - iconUrl
+                - configSchema
+                - detailsSchema
+                - secretsSchema
+                - plans
+                - backend
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-createProvider
+    put:
+      summary: upsertProvider
+      tags:
+      - managed-services
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              anyOf:
+              - type: object
+                properties:
+                  author:
+                    type: string
+                  backups:
+                    type: object
+                    properties:
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                    required:
+                    - configSchema
+                    - secretsSchema
+                  capabilities:
+                    type: object
+                    properties:
+                      pause:
+                        type: boolean
+                      backups:
+                        type: boolean
+                      pointInTimeRecovery:
+                        type: boolean
+                  category:
+                    type: string
+                  description:
+                    type: string
+                  displayName:
+                    type: string
+                  iconUrl:
+                    type: string
+                  configSchema:
+                    type: object
+                    description: JSON Schema
+                  detailsSchema:
+                    type: object
+                    description: JSON Schema
+                  secretsSchema:
+                    type: object
+                    description: JSON Schema
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              pricedAs:
+                                type: string
+                                enum:
+                                - cpu-tenths
+                                - free
+                                - network-bandwidth-mbps
+                                - ram-mib
+                                - replicas
+                                - storage-mib
+                              schema:
+                                type: object
+                                description: JSON Schema
+                            required:
+                            - schema
+                      required:
+                      - id
+                      - name
+                      - description
+                      - parameters
+                  versions:
+                    example:
+                      0.0.1:
+                        ciProfile: debug
+                        gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                        description: Initial release
+                      1.0.0-rc:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                        description: Release Candidate. Added feature X, Y and Z
+                      1.0.0:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                        description: Long Term Support Release
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        gitRef:
+                          type: string
+                        ciProfile:
+                          type: string
+                        appVersion:
+                          type: string
+                        description:
+                          type: string
+                      required:
+                      - gitRef
+                      - ciProfile
+                    propertyNames:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  name:
+                    title: ProviderName
+                    pattern: ^[a-z0-9-_]+$
+                    type: string
+                  version:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  schemaVersion:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  backend:
+                    type: object
+                    properties:
+                      landscape:
+                        type: object
+                        properties:
+                          gitUrl:
+                            type: string
+                          ciProfile:
+                            type: string
+                            deprecated: true
+                            description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                        required:
+                        - gitUrl
+                    required:
+                    - landscape
+                  scope:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - global
+                      required:
+                      - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - team
+                        teamIds:
+                          type: array
+                          items:
+                            type: integer
+                            minimum: 0
+                      required:
+                      - type
+                      - teamIds
+                required:
+                - author
+                - category
+                - description
+                - displayName
+                - iconUrl
+                - configSchema
+                - detailsSchema
+                - secretsSchema
+                - plans
+                - name
+                - backend
+              - type: object
+                properties:
+                  gitUrl:
+                    type: string
+                  gitRef:
+                    type: string
+                  scope:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - global
+                      required:
+                      - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - team
+                        teamIds:
+                          type: array
+                          items:
+                            type: integer
+                            minimum: 0
+                      required:
+                      - type
+                      - teamIds
+                required:
+                - gitUrl
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    title: ProviderName
+                    pattern: ^[a-z0-9-_]+$
+                    type: string
+                  version:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  schemaVersion:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  scope:
+                    type: string
+                    enum:
+                    - global
+                    - team
+                  author:
+                    type: string
+                  backups:
+                    type: object
+                    properties:
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                    required:
+                    - configSchema
+                    - secretsSchema
+                  capabilities:
+                    type: object
+                    properties:
+                      pause:
+                        type: boolean
+                      backups:
+                        type: boolean
+                      pointInTimeRecovery:
+                        type: boolean
+                  category:
+                    type: string
+                  description:
+                    type: string
+                  displayName:
+                    type: string
+                  iconUrl:
+                    type: string
+                  configSchema:
+                    type: object
+                    description: JSON Schema
+                  detailsSchema:
+                    type: object
+                    description: JSON Schema
+                  secretsSchema:
+                    type: object
+                    description: JSON Schema
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              pricedAs:
+                                type: string
+                                enum:
+                                - cpu-tenths
+                                - free
+                                - network-bandwidth-mbps
+                                - ram-mib
+                                - replicas
+                                - storage-mib
+                              schema:
+                                type: object
+                                description: JSON Schema
+                            required:
+                            - schema
+                      required:
+                      - id
+                      - name
+                      - description
+                      - parameters
+                  versions:
+                    example:
+                      0.0.1:
+                        ciProfile: debug
+                        gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                        description: Initial release
+                      1.0.0-rc:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                        description: Release Candidate. Added feature X, Y and Z
+                      1.0.0:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                        description: Long Term Support Release
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        gitRef:
+                          type: string
+                        ciProfile:
+                          type: string
+                        appVersion:
+                          type: string
+                        description:
+                          type: string
+                      required:
+                      - gitRef
+                      - ciProfile
+                    propertyNames:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  backend:
+                    type: object
+                    properties:
+                      landscape:
+                        type: object
+                        properties:
+                          gitUrl:
+                            type: string
+                          ciProfile:
+                            type: string
+                            deprecated: true
+                            description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                        required:
+                        - gitUrl
+                    required:
+                    - landscape
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - name
+                - version
+                - schemaVersion
+                - author
+                - category
+                - description
+                - displayName
+                - iconUrl
+                - configSchema
+                - detailsSchema
+                - secretsSchema
+                - plans
+                - backend
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-upsertProvider
+  /managed-services/providers/{name}/{schemaVersion}:
+    delete:
+      summary: deleteProvider
+      tags:
+      - managed-services
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          title: ProviderName
+          pattern: ^[a-z0-9-_]+$
+          type: string
+      - name: schemaVersion
+        in: path
+        required: true
+        schema:
+          title: ProviderSchemaVersion
+          pattern: ^v[0-9][0-9a-z]*$
+          type: string
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Managed service not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-deleteProvider
+    patch:
+      summary: updateProvider
+      tags:
+      - managed-services
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          title: ProviderName
+          pattern: ^[a-z0-9-_]+$
+          type: string
+      - name: schemaVersion
+        in: path
+        required: true
+        schema:
+          title: ProviderSchemaVersion
+          pattern: ^v[0-9][0-9a-z]*$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: string
+                backups:
+                  type: object
+                  properties:
+                    configSchema:
+                      type: object
+                      description: JSON Schema
+                    secretsSchema:
+                      type: object
+                      description: JSON Schema
+                  required:
+                  - configSchema
+                  - secretsSchema
+                capabilities:
+                  type: object
+                  properties:
+                    pause:
+                      type: boolean
+                    backups:
+                      type: boolean
+                    pointInTimeRecovery:
+                      type: boolean
+                category:
+                  type: string
+                description:
+                  type: string
+                displayName:
+                  type: string
+                iconUrl:
+                  type: string
+                configSchema:
+                  type: object
+                  description: JSON Schema
+                detailsSchema:
+                  type: object
+                  description: JSON Schema
+                secretsSchema:
+                  type: object
+                  description: JSON Schema
+                plans:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        minimum: 0
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      parameters:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            pricedAs:
+                              type: string
+                              enum:
+                              - cpu-tenths
+                              - free
+                              - network-bandwidth-mbps
+                              - ram-mib
+                              - replicas
+                              - storage-mib
+                            schema:
+                              type: object
+                              description: JSON Schema
+                          required:
+                          - schema
+                    required:
+                    - id
+                    - name
+                    - description
+                    - parameters
+                versions:
+                  example:
+                    0.0.1:
+                      ciProfile: debug
+                      gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                      description: Initial release
+                    1.0.0-rc:
+                      appVersion: Nextcloud v33
+                      ciProfile: prod
+                      gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                      description: Release Candidate. Added feature X, Y and Z
+                    1.0.0:
+                      appVersion: Nextcloud v33
+                      ciProfile: prod
+                      gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                      description: Long Term Support Release
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      gitRef:
+                        type: string
+                      ciProfile:
+                        type: string
+                      appVersion:
+                        type: string
+                      description:
+                        type: string
+                    required:
+                    - gitRef
+                    - ciProfile
+                  propertyNames:
+                    title: SemVer
+                    type: string
+                    description: A semantic version number
+                    example: 1.0.0
+                backend:
+                  type: object
+                  properties:
+                    landscape:
+                      type: object
+                      properties:
+                        gitUrl:
+                          type: string
+                        ciProfile:
+                          type: string
+                          deprecated: true
+                          description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                      required:
+                      - gitUrl
+                  required:
+                  - landscape
+                scope:
+                  type: object
+                  anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - global
+                    required:
+                    - type
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - team
+                      teamIds:
+                        type: array
+                        items:
+                          type: integer
+                          minimum: 0
+                    required:
+                    - type
+                    - teamIds
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    title: ProviderName
+                    pattern: ^[a-z0-9-_]+$
+                    type: string
+                  version:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  schemaVersion:
+                    title: ProviderSchemaVersion
+                    pattern: ^v[0-9][0-9a-z]*$
+                    type: string
+                  scope:
+                    type: string
+                    enum:
+                    - global
+                    - team
+                  author:
+                    type: string
+                  backups:
+                    type: object
+                    properties:
+                      configSchema:
+                        type: object
+                        description: JSON Schema
+                      secretsSchema:
+                        type: object
+                        description: JSON Schema
+                    required:
+                    - configSchema
+                    - secretsSchema
+                  capabilities:
+                    type: object
+                    properties:
+                      pause:
+                        type: boolean
+                      backups:
+                        type: boolean
+                      pointInTimeRecovery:
+                        type: boolean
+                  category:
+                    type: string
+                  description:
+                    type: string
+                  displayName:
+                    type: string
+                  iconUrl:
+                    type: string
+                  configSchema:
+                    type: object
+                    description: JSON Schema
+                  detailsSchema:
+                    type: object
+                    description: JSON Schema
+                  secretsSchema:
+                    type: object
+                    description: JSON Schema
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              pricedAs:
+                                type: string
+                                enum:
+                                - cpu-tenths
+                                - free
+                                - network-bandwidth-mbps
+                                - ram-mib
+                                - replicas
+                                - storage-mib
+                              schema:
+                                type: object
+                                description: JSON Schema
+                            required:
+                            - schema
+                      required:
+                      - id
+                      - name
+                      - description
+                      - parameters
+                  versions:
+                    example:
+                      0.0.1:
+                        ciProfile: debug
+                        gitRef: 1a410efbd13591db07496601ebc7a059dd55cfe9
+                        description: Initial release
+                      1.0.0-rc:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: cac0cab538b970a37ea1e769cbbde608743bc96d
+                        description: Release Candidate. Added feature X, Y and Z
+                      1.0.0:
+                        appVersion: Nextcloud v33
+                        ciProfile: prod
+                        gitRef: fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+                        description: Long Term Support Release
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        gitRef:
+                          type: string
+                        ciProfile:
+                          type: string
+                        appVersion:
+                          type: string
+                        description:
+                          type: string
+                      required:
+                      - gitRef
+                      - ciProfile
+                    propertyNames:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  backend:
+                    type: object
+                    properties:
+                      landscape:
+                        type: object
+                        properties:
+                          gitUrl:
+                            type: string
+                          ciProfile:
+                            type: string
+                            deprecated: true
+                            description: Deprecated legacy fallback CI profile. A provider must define at least one version; as a temporary backwards-compatibility fallback, a provider without versions is still accepted as long as it defines this field.
+                        required:
+                        - gitUrl
+                    required:
+                    - landscape
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - name
+                - version
+                - schemaVersion
+                - author
+                - category
+                - description
+                - displayName
+                - iconUrl
+                - configSchema
+                - detailsSchema
+                - secretsSchema
+                - plans
+                - backend
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Managed service not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-updateProvider
+  /managed-services:
+    post:
+      summary: create
+      tags:
+      - managed-services
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                backups:
+                  type: object
+                  anyOf:
+                  - type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        enum:
+                        - true
+                      deleteRetentionDays:
+                        type: integer
+                        minimum: 1
+                        maximum: 365
+                      intervalH:
+                        type: integer
+                        minimum: 1
+                        maximum: 730
+                      config:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                      secrets:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                    required:
+                    - enabled
+                    - deleteRetentionDays
+                    - intervalH
+                    - config
+                    - secrets
+                  - type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        enum:
+                        - false
+                    required:
+                    - enabled
+                config:
+                  type: object
+                  additionalProperties:
+                    description: any defined value
+                provider:
+                  type: object
+                  properties:
+                    name:
+                      title: ProviderName
+                      pattern: ^[a-z0-9-_]+$
+                      type: string
+                    version:
+                      title: ProviderSchemaVersion
+                      pattern: ^v[0-9][0-9a-z]*$
+                      type: string
+                    schemaVersion:
+                      title: ProviderSchemaVersion
+                      pattern: ^v[0-9][0-9a-z]*$
+                      type: string
+                  required:
+                  - name
+                name:
+                  title: alphanumeric with spaces in between (max length 127)
+                  pattern: ^(?!\s)[a-zA-Z0-9\-_\s]{0,126}[a-zA-Z0-9\-_]$
+                  type: string
+                plan:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    parameters:
+                      type: object
+                      additionalProperties:
+                        type: integer
+                  required:
+                  - id
+                  - parameters
+                recoverFrom:
+                  type: object
+                  anyOf:
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: UUID
+                        format: uuid
+                        example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                      config:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                      secrets:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                    required:
+                    - id
+                    - config
+                    - secrets
+                  - type: object
+                    properties:
+                      msId:
+                        type: string
+                        description: UUID
+                        format: uuid
+                        example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                      time:
+                        type: string
+                        format: date-time
+                      config:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                      secrets:
+                        type: object
+                        additionalProperties:
+                          description: any defined value
+                    required:
+                    - msId
+                    - time
+                    - config
+                    - secrets
+                secrets:
+                  type: object
+                  additionalProperties:
+                    description: any defined value
+                teamId:
+                  type: integer
+                  minimum: 0
+                version:
+                  title: SemVer
+                  type: string
+                  description: A semantic version number
+                  example: 1.0.0
+              required:
+              - config
+              - provider
+              - name
+              - plan
+              - secrets
+              - teamId
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                  provider:
+                    type: object
+                    properties:
+                      name:
+                        title: ProviderName
+                        pattern: ^[a-z0-9-_]+$
+                        type: string
+                      version:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      schemaVersion:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                    required:
+                    - name
+                    - version
+                    - schemaVersion
+                  name:
+                    title: alphanumeric with spaces in between (max length 127)
+                    pattern: ^(?!\s)[a-zA-Z0-9\-_\s]{0,126}[a-zA-Z0-9\-_]$
+                    type: string
+                  backups:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                          enum:
+                          - true
+                        deleteRetentionDays:
+                          type: integer
+                          minimum: 1
+                          maximum: 365
+                        intervalH:
+                          type: integer
+                          minimum: 1
+                          maximum: 730
+                        entries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: UUID
+                                format: uuid
+                                example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                              scheduledAt:
+                                type: string
+                                format: date-time
+                              initiatedAt:
+                                type: string
+                                format: date-time
+                              confirmedAt:
+                                type: string
+                                format: date-time
+                            required:
+                            - id
+                            - scheduledAt
+                        config:
+                          type: object
+                          additionalProperties:
+                            description: any defined value
+                      required:
+                      - enabled
+                      - deleteRetentionDays
+                      - intervalH
+                      - entries
+                      - config
+                    - type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                          enum:
+                          - false
+                        entries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: UUID
+                                format: uuid
+                                example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                              scheduledAt:
+                                type: string
+                                format: date-time
+                              initiatedAt:
+                                type: string
+                                format: date-time
+                              confirmedAt:
+                                type: string
+                                format: date-time
+                            required:
+                            - id
+                            - scheduledAt
+                      required:
+                      - enabled
+                      - entries
+                  pause:
+                    type: boolean
+                  plan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        minimum: 0
+                      parameters:
+                        type: object
+                        additionalProperties:
+                          type: integer
+                    required:
+                    - id
+                    - parameters
+                  createdAt:
+                    type: string
+                    format: date-time
+                  config:
+                    type: object
+                    additionalProperties:
+                      description: any defined value
+                  recentEvents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        eventName:
+                          type: string
+                        timestamp:
+                          type: string
+                          format: date-time
+                        observedTimestamp:
+                          type: string
+                          format: date-time
+                        severityNumber:
+                          type: integer
+                          minimum: 0
+                        body:
+                          type: string
+                        resource:
+                          type: string
+                        attributes:
+                          type: object
+                          additionalProperties:
+                            type: string
+                      required:
+                      - eventName
+                      - timestamp
+                      - observedTimestamp
+                      - severityNumber
+                      - body
+                      - resource
+                      - attributes
+                  status:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - creating
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - updating
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - deleted
+                        deletedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - state
+                      - deletedAt
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - deleting
+                        deletedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - state
+                      - deletedAt
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - pausing
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - unpausing
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - paused
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - synchronized
+                        detailsRef:
+                          type: string
+                      required:
+                      - state
+                      - detailsRef
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - unknown
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - invalid provider
+                      required:
+                      - state
+                  version:
+                    title: SemVer
+                    type: string
+                    description: A semantic version number
+                    example: 1.0.0
+                required:
+                - id
+                - provider
+                - name
+                - backups
+                - pause
+                - plan
+                - createdAt
+                - config
+                - status
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-create
+    get:
+      summary: list
+      tags:
+      - managed-services
+      parameters:
+      - name: team
+        in: query
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: includeDeleted
+        in: query
+        required: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: UUID
+                      format: uuid
+                      example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                    provider:
+                      type: object
+                      properties:
+                        name:
+                          title: ProviderName
+                          pattern: ^[a-z0-9-_]+$
+                          type: string
+                        version:
+                          title: ProviderSchemaVersion
+                          pattern: ^v[0-9][0-9a-z]*$
+                          type: string
+                        schemaVersion:
+                          title: ProviderSchemaVersion
+                          pattern: ^v[0-9][0-9a-z]*$
+                          type: string
+                      required:
+                      - name
+                      - version
+                      - schemaVersion
+                    name:
+                      title: alphanumeric with spaces in between (max length 127)
+                      pattern: ^(?!\s)[a-zA-Z0-9\-_\s]{0,126}[a-zA-Z0-9\-_]$
+                      type: string
+                    backups:
+                      type: object
+                      anyOf:
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                            enum:
+                            - true
+                          deleteRetentionDays:
+                            type: integer
+                            minimum: 1
+                            maximum: 365
+                          intervalH:
+                            type: integer
+                            minimum: 1
+                            maximum: 730
+                          entries:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  description: UUID
+                                  format: uuid
+                                  example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                                scheduledAt:
+                                  type: string
+                                  format: date-time
+                                initiatedAt:
+                                  type: string
+                                  format: date-time
+                                confirmedAt:
+                                  type: string
+                                  format: date-time
+                              required:
+                              - id
+                              - scheduledAt
+                          config:
+                            type: object
+                            additionalProperties:
+                              description: any defined value
+                        required:
+                        - enabled
+                        - deleteRetentionDays
+                        - intervalH
+                        - entries
+                        - config
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                            enum:
+                            - false
+                          entries:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  description: UUID
+                                  format: uuid
+                                  example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                                scheduledAt:
+                                  type: string
+                                  format: date-time
+                                initiatedAt:
+                                  type: string
+                                  format: date-time
+                                confirmedAt:
+                                  type: string
+                                  format: date-time
+                              required:
+                              - id
+                              - scheduledAt
+                        required:
+                        - enabled
+                        - entries
+                    pause:
+                      type: boolean
+                    plan:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        parameters:
+                          type: object
+                          additionalProperties:
+                            type: integer
+                      required:
+                      - id
+                      - parameters
+                    createdAt:
+                      type: string
+                      format: date-time
+                    config:
+                      type: object
+                      additionalProperties:
+                        description: any defined value
+                    recentEvents:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          eventName:
+                            type: string
+                          timestamp:
+                            type: string
+                            format: date-time
+                          observedTimestamp:
+                            type: string
+                            format: date-time
+                          severityNumber:
+                            type: integer
+                            minimum: 0
+                          body:
+                            type: string
+                          resource:
+                            type: string
+                          attributes:
+                            type: object
+                            additionalProperties:
+                              type: string
+                        required:
+                        - eventName
+                        - timestamp
+                        - observedTimestamp
+                        - severityNumber
+                        - body
+                        - resource
+                        - attributes
+                    status:
+                      type: object
+                      anyOf:
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - creating
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - updating
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - deleted
+                          deletedAt:
+                            type: string
+                            format: date-time
+                        required:
+                        - state
+                        - deletedAt
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - deleting
+                          deletedAt:
+                            type: string
+                            format: date-time
+                        required:
+                        - state
+                        - deletedAt
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - pausing
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - unpausing
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - paused
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - synchronized
+                          detailsRef:
+                            type: string
+                        required:
+                        - state
+                        - detailsRef
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - unknown
+                        required:
+                        - state
+                      - type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - invalid provider
+                        required:
+                        - state
+                    version:
+                      title: SemVer
+                      type: string
+                      description: A semantic version number
+                      example: 1.0.0
+                  required:
+                  - id
+                  - provider
+                  - name
+                  - backups
+                  - pause
+                  - plan
+                  - createdAt
+                  - config
+                  - status
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-list
+  /managed-services/{id}:
+    delete:
+      summary: delete
+      tags:
+      - managed-services
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Managed service not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-delete
+    get:
+      summary: getDetails
+      tags:
+      - managed-services
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  description: any defined value
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Managed service not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-getDetails
+    patch:
+      summary: update
+      tags:
+      - managed-services
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                backups:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    deleteRetentionDays:
+                      type: integer
+                      minimum: 1
+                      maximum: 365
+                    intervalH:
+                      type: integer
+                      minimum: 1
+                      maximum: 730
+                    config:
+                      type: object
+                      additionalProperties:
+                        description: any defined value
+                    secrets:
+                      type: object
+                      additionalProperties:
+                        description: any defined value
+                config:
+                  type: object
+                  additionalProperties:
+                    description: any defined value
+                secrets:
+                  type: object
+                  additionalProperties:
+                    description: any defined value
+                name:
+                  type: string
+                pause:
+                  type: boolean
+                plan:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    parameters:
+                      type: object
+                      additionalProperties:
+                        type: integer
+                  required:
+                  - id
+                  - parameters
+                version:
+                  title: SemVer
+                  type: string
+                  description: A semantic version number
+                  example: 1.0.0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                  provider:
+                    type: object
+                    properties:
+                      name:
+                        title: ProviderName
+                        pattern: ^[a-z0-9-_]+$
+                        type: string
+                      version:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                      schemaVersion:
+                        title: ProviderSchemaVersion
+                        pattern: ^v[0-9][0-9a-z]*$
+                        type: string
+                    required:
+                    - name
+                    - version
+                    - schemaVersion
+                  name:
+                    title: alphanumeric with spaces in between (max length 127)
+                    pattern: ^(?!\s)[a-zA-Z0-9\-_\s]{0,126}[a-zA-Z0-9\-_]$
+                    type: string
+                  backups:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                          enum:
+                          - true
+                        deleteRetentionDays:
+                          type: integer
+                          minimum: 1
+                          maximum: 365
+                        intervalH:
+                          type: integer
+                          minimum: 1
+                          maximum: 730
+                        entries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: UUID
+                                format: uuid
+                                example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                              scheduledAt:
+                                type: string
+                                format: date-time
+                              initiatedAt:
+                                type: string
+                                format: date-time
+                              confirmedAt:
+                                type: string
+                                format: date-time
+                            required:
+                            - id
+                            - scheduledAt
+                        config:
+                          type: object
+                          additionalProperties:
+                            description: any defined value
+                      required:
+                      - enabled
+                      - deleteRetentionDays
+                      - intervalH
+                      - entries
+                      - config
+                    - type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                          enum:
+                          - false
+                        entries:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: UUID
+                                format: uuid
+                                example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                              scheduledAt:
+                                type: string
+                                format: date-time
+                              initiatedAt:
+                                type: string
+                                format: date-time
+                              confirmedAt:
+                                type: string
+                                format: date-time
+                            required:
+                            - id
+                            - scheduledAt
+                      required:
+                      - enabled
+                      - entries
+                  pause:
+                    type: boolean
+                  plan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        minimum: 0
+                      parameters:
+                        type: object
+                        additionalProperties:
+                          type: integer
+                    required:
+                    - id
+                    - parameters
+                  createdAt:
+                    type: string
+                    format: date-time
+                  config:
+                    type: object
+                    additionalProperties:
+                      description: any defined value
+                  recentEvents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        eventName:
+                          type: string
+                        timestamp:
+                          type: string
+                          format: date-time
+                        observedTimestamp:
+                          type: string
+                          format: date-time
+                        severityNumber:
+                          type: integer
+                          minimum: 0
+                        body:
+                          type: string
+                        resource:
+                          type: string
+                        attributes:
+                          type: object
+                          additionalProperties:
+                            type: string
+                      required:
+                      - eventName
+                      - timestamp
+                      - observedTimestamp
+                      - severityNumber
+                      - body
+                      - resource
+                      - attributes
+                  status:
+                    type: object
+                    anyOf:
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - creating
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - updating
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - deleted
+                        deletedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - state
+                      - deletedAt
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - deleting
+                        deletedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - state
+                      - deletedAt
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - pausing
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - unpausing
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - paused
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - synchronized
+                        detailsRef:
+                          type: string
+                      required:
+                      - state
+                      - detailsRef
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - unknown
+                      required:
+                      - state
+                    - type: object
+                      properties:
+                        state:
+                          type: string
+                          enum:
+                          - invalid provider
+                      required:
+                      - state
+                  version:
+                    title: SemVer
+                    type: string
+                    description: A semantic version number
+                    example: 1.0.0
+                required:
+                - id
+                - provider
+                - name
+                - backups
+                - pause
+                - plan
+                - createdAt
+                - config
+                - status
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Managed service not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-update
+  /managed-services/{id}/backups:
+    post:
+      summary: scheduleBackup
+      tags:
+      - managed-services
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                  scheduledAt:
+                    type: string
+                    format: date-time
+                  initiatedAt:
+                    type: string
+                    format: date-time
+                  confirmedAt:
+                    type: string
+                    format: date-time
+                required:
+                - id
+                - scheduledAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: managed-services-scheduleBackup
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,207 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters metadata API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: metadata
+paths:
+  /metadata/datacenters:
+    get:
+      summary: getDatacenters
+      tags:
+      - metadata
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    name:
+                      type: string
+                    city:
+                      type: string
+                    countryCode:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  - city
+                  - countryCode
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: metadata-getDatacenters
+  /metadata/workspace-plans:
+    get:
+      summary: getWorkspacePlans
+      tags:
+      - metadata
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    priceUsd:
+                      type: number
+                    title:
+                      type: string
+                    deprecated:
+                      type: boolean
+                    characteristics:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        CPU:
+                          type: number
+                        GPU:
+                          type: number
+                        RAM:
+                          type: integer
+                          minimum: 0
+                        SSD:
+                          type: integer
+                          minimum: 0
+                        TempStorage:
+                          type: integer
+                          minimum: 0
+                        onDemand:
+                          type: boolean
+                      required:
+                      - id
+                      - CPU
+                      - GPU
+                      - RAM
+                      - SSD
+                      - TempStorage
+                      - onDemand
+                    maxReplicas:
+                      type: integer
+                      minimum: 1
+                  required:
+                  - id
+                  - priceUsd
+                  - title
+                  - deprecated
+                  - characteristics
+                  - maxReplicas
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: metadata-getWorkspacePlans
+  /metadata/workspace-base-images:
+    get:
+      summary: getWorkspaceBaseImages
+      tags:
+      - metadata
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    supportedUntil:
+                      type: string
+                      format: date-time
+                  required:
+                  - id
+                  - name
+                  - supportedUntil
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: metadata-getWorkspaceBaseImages
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

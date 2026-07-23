@@ -1,0 +1,2582 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters workspaces API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: workspaces
+paths:
+  /workspaces/{workspaceId}:
+    get:
+      summary: getWorkspace
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  name:
+                    type: string
+                  planId:
+                    type: integer
+                    minimum: 0
+                  isPrivateRepo:
+                    type: boolean
+                  replicas:
+                    type: integer
+                    minimum: 1
+                  id:
+                    type: integer
+                    minimum: 0
+                  baseImage:
+                    type: string
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  userId:
+                    type: integer
+                  gitUrl:
+                    type: string
+                    nullable: true
+                  initialBranch:
+                    type: string
+                    nullable: true
+                  sourceWorkspaceId:
+                    type: integer
+                    minimum: 0
+                    nullable: true
+                  welcomeMessage:
+                    type: string
+                    nullable: true
+                  vpnConfig:
+                    type: string
+                    nullable: true
+                  restricted:
+                    type: boolean
+                  collectTraces:
+                    type: boolean
+                  persistentLogs:
+                    type: boolean
+                  devDomain:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - teamId
+                - name
+                - planId
+                - isPrivateRepo
+                - replicas
+                - id
+                - dataCenterId
+                - userId
+                - gitUrl
+                - initialBranch
+                - sourceWorkspaceId
+                - welcomeMessage
+                - vpnConfig
+                - restricted
+                - collectTraces
+                - persistentLogs
+                - createdAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-getWorkspace
+    patch:
+      summary: updateWorkspace
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                planId:
+                  type: integer
+                  minimum: 0
+                baseImage:
+                  type: string
+                name:
+                  type: string
+                replicas:
+                  type: integer
+                  minimum: 1
+                vpnConfig:
+                  type: string
+                  nullable: true
+                restricted:
+                  type: boolean
+                storageMib:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                sharedVaultName:
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-updateWorkspace
+    delete:
+      summary: deleteWorkspace
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-deleteWorkspace
+  /workspaces/{workspaceId}/status:
+    get:
+      summary: getWorkspaceStatus
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isRunning:
+                    type: boolean
+                required:
+                - isRunning
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-getWorkspaceStatus
+  /workspaces:
+    post:
+      summary: createWorkspace
+      tags:
+      - workspaces
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: integer
+                  minimum: 0
+                name:
+                  type: string
+                planId:
+                  type: integer
+                  minimum: 0
+                isPrivateRepo:
+                  type: boolean
+                replicas:
+                  type: integer
+                  minimum: 1
+                baseImage:
+                  type: string
+                gitUrl:
+                  type: string
+                initialBranch:
+                  type: string
+                cloneDepth:
+                  type: integer
+                  minimum: 1
+                sourceWorkspaceId:
+                  type: integer
+                  minimum: 0
+                welcomeMessage:
+                  type: string
+                vpnConfig:
+                  type: string
+                restricted:
+                  type: boolean
+                env:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        pattern: ^[A-Za-z_][A-Za-z0-9_.-]*$
+                        example: MY_VAR
+                      value:
+                        type: string
+                    required:
+                    - name
+                    - value
+                storageMib:
+                  type: integer
+                  minimum: 1
+                sharedVaultName:
+                  type: string
+              required:
+              - teamId
+              - name
+              - planId
+              - isPrivateRepo
+              - replicas
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  name:
+                    type: string
+                  planId:
+                    type: integer
+                    minimum: 0
+                  isPrivateRepo:
+                    type: boolean
+                  replicas:
+                    type: integer
+                    minimum: 1
+                  id:
+                    type: integer
+                    minimum: 0
+                  baseImage:
+                    type: string
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  userId:
+                    type: integer
+                  gitUrl:
+                    type: string
+                    nullable: true
+                  initialBranch:
+                    type: string
+                    nullable: true
+                  sourceWorkspaceId:
+                    type: integer
+                    minimum: 0
+                    nullable: true
+                  welcomeMessage:
+                    type: string
+                    nullable: true
+                  vpnConfig:
+                    type: string
+                    nullable: true
+                  restricted:
+                    type: boolean
+                  collectTraces:
+                    type: boolean
+                  persistentLogs:
+                    type: boolean
+                  devDomain:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - teamId
+                - name
+                - planId
+                - isPrivateRepo
+                - replicas
+                - id
+                - dataCenterId
+                - userId
+                - gitUrl
+                - initialBranch
+                - sourceWorkspaceId
+                - welcomeMessage
+                - vpnConfig
+                - restricted
+                - collectTraces
+                - persistentLogs
+                - createdAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-createWorkspace
+  /workspaces/team/{teamId}:
+    get:
+      summary: listWorkspaces
+      tags:
+      - workspaces
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    teamId:
+                      type: integer
+                      minimum: 0
+                    name:
+                      type: string
+                    planId:
+                      type: integer
+                      minimum: 0
+                    isPrivateRepo:
+                      type: boolean
+                    replicas:
+                      type: integer
+                      minimum: 1
+                    id:
+                      type: integer
+                      minimum: 0
+                    baseImage:
+                      type: string
+                    dataCenterId:
+                      type: integer
+                      minimum: 0
+                    userId:
+                      type: integer
+                    gitUrl:
+                      type: string
+                      nullable: true
+                    initialBranch:
+                      type: string
+                      nullable: true
+                    sourceWorkspaceId:
+                      type: integer
+                      minimum: 0
+                      nullable: true
+                    welcomeMessage:
+                      type: string
+                      nullable: true
+                    vpnConfig:
+                      type: string
+                      nullable: true
+                    restricted:
+                      type: boolean
+                    collectTraces:
+                      type: boolean
+                    persistentLogs:
+                      type: boolean
+                    devDomain:
+                      type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - teamId
+                  - name
+                  - planId
+                  - isPrivateRepo
+                  - replicas
+                  - id
+                  - dataCenterId
+                  - userId
+                  - gitUrl
+                  - initialBranch
+                  - sourceWorkspaceId
+                  - welcomeMessage
+                  - vpnConfig
+                  - restricted
+                  - collectTraces
+                  - persistentLogs
+                  - createdAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-listWorkspaces
+  /workspaces/{workspaceId}/landscape/deploy/{profile}:
+    post:
+      summary: deployLandscape
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: profile
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[\w-]+(\.[\w-]+)*$
+          example: my-profile
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace does not supportMulti Server Deployments, config contains an invalid templating reference, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-deployLandscape-1
+  /workspaces/{workspaceId}/landscape/deploy:
+    post:
+      summary: deployLandscape
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace does not supportMulti Server Deployments, config contains an invalid templating reference, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-deployLandscape
+  /workspaces/{workspaceId}/landscape/teardown:
+    delete:
+      summary: teardownLandscape
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-teardownLandscape
+  /workspaces/{workspaceId}/landscape/scale:
+    patch:
+      summary: scaleLandscapeServices
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                myServer1: 3
+                myServer2: 2
+              type: object
+              additionalProperties:
+                type: integer
+                minimum: 1
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-scaleLandscapeServices
+  /workspaces/{workspaceId}/pipeline/{stage}/start/{profile}:
+    post:
+      summary: startPipelineStage
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: stage
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - prepare
+          - test
+          - run
+      - name: profile
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[\w-]+(\.[\w-]+)*$
+          example: my-profile
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-startPipelineStage-1
+  /workspaces/{workspaceId}/pipeline/{stage}/start:
+    post:
+      summary: startPipelineStage
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: stage
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - prepare
+          - test
+          - run
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-startPipelineStage
+  /workspaces/{workspaceId}/pipeline/{stage}/stop:
+    post:
+      summary: stopPipelineStage
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: stage
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - prepare
+          - test
+          - run
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-stopPipelineStage
+  /workspaces/{workspaceId}/pipeline/{stage}:
+    get:
+      summary: pipelineStatus
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: stage
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - prepare
+          - test
+          - run
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                      enum:
+                      - waiting
+                      - running
+                      - success
+                      - failure
+                      - aborted
+                    startedAt:
+                      type: string
+                      format: date-time
+                    finishedAt:
+                      type: string
+                      format: date-time
+                    steps:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                            - waiting
+                            - running
+                            - success
+                            - failure
+                            - aborted
+                          startedAt:
+                            type: string
+                            format: date-time
+                          finishedAt:
+                            type: string
+                            format: date-time
+                        required:
+                        - state
+                    replica:
+                      type: string
+                    server:
+                      type: string
+                      pattern: ^(?:[a-z]|[a-z][-a-z0-9]{0,30}[a-z0-9])$
+                      example: myServer
+                  required:
+                  - state
+                  - steps
+                  - replica
+                  - server
+        '400':
+          description: Workspace is not running, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-pipelineStatus
+  /workspaces/{workspaceId}/env-vars:
+    get:
+      summary: listEnvVars
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      pattern: ^[A-Za-z_][A-Za-z0-9_.-]*$
+                      example: MY_VAR
+                    value:
+                      type: string
+                  required:
+                  - name
+                  - value
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-listEnvVars
+    put:
+      summary: setEnvVar
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    pattern: ^[A-Za-z_][A-Za-z0-9_.-]*$
+                    example: MY_VAR
+                  value:
+                    type: string
+                required:
+                - name
+                - value
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-setEnvVar
+    delete:
+      summary: deleteEnvVar
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                pattern: ^[A-Za-z_][A-Za-z0-9_.-]*$
+                example: MY_VAR
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-deleteEnvVar
+  /workspaces/{workspaceId}/execute:
+    post:
+      summary: executeCommand
+      description: Executes the command with "bash -c command". Timeouts after 5000ms.
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                workingDir:
+                  type: string
+                env:
+                  type: object
+                  additionalProperties:
+                    type: string
+              required:
+              - command
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  command:
+                    type: string
+                  workingDir:
+                    type: string
+                  output:
+                    type: string
+                  error:
+                    type: string
+                required:
+                - command
+                - workingDir
+                - output
+                - error
+        '400':
+          description: Workspace is not running, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-executeCommand
+  /workspaces/{workspaceId}/git/head:
+    get:
+      summary: gitHead
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  head:
+                    type: string
+                required:
+                - head
+        '400':
+          description: Workspace is not running, git error, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-gitHead
+  /workspaces/{workspaceId}/git/pull/{remote}/{branch}:
+    post:
+      summary: gitPull
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: remote
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: branch
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, git error, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-gitPull-2
+  /workspaces/{workspaceId}/git/pull/{remote}:
+    post:
+      summary: gitPull
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: remote
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, git error, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-gitPull-1
+  /workspaces/{workspaceId}/git/pull:
+    post:
+      summary: gitPull
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Workspace is not running, git error, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Workspace is not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: workspaces-gitPull
+  /workspaces/{workspaceId}/logs/{stage}/{step}:
+    get:
+      summary: logs
+      description: Returns a stream of logs for a given "stage" and "step". For "run" stage logs of Multi Server Deployments use [serverLogs](#/workspaces/workspaces-serverLogs) or [replicaLogs](#/workspaces/workspaces-replicaLogs).
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: stage
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - prepare
+          - test
+          - run
+      - name: step
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: 'Success: Opens a Server Side Event(SSE) stream.'
+          content:
+            text/event-stream:
+              schema:
+                description: 'SSE stream with two event types: "data" and "problem". Both event data contain JSON objects in the form described by their schemas. Possible problem statuses and reasons:400: Workspace is not running, run stage logs requested for Multi Server Deployment, path or request body variable does not match schema. 401: Authorization information is missing or invalid. 404: Workspace is not found.'
+                oneOf:
+                - $ref: '#/components/schemas/workspaces.logs.get.response'
+                - $ref: '#/components/schemas/_problem'
+                discriminator:
+                  propertyName: event
+                  mapping:
+                    data: '#/components/schemas/workspaces.logs.get.response'
+                    problem: '#/components/schemas/_problem'
+      security:
+      - bearerAuth: []
+      operationId: workspaces-logs
+  /workspaces/{workspaceId}/logs/run/{step}/server/{server}:
+    get:
+      summary: serverLogs
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: step
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: server
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Success: Opens a Server Side Event(SSE) stream.'
+          content:
+            text/event-stream:
+              schema:
+                description: 'SSE stream with two event types: "data" and "problem". Both event data contain JSON objects in the form described by their schemas. Possible problem statuses and reasons:400: Workspace is not running, path or request body variable does not match schema. 401: Authorization information is missing or invalid. 404: Workspace is not found.'
+                oneOf:
+                - $ref: '#/components/schemas/workspaces.serverLogs.get.response'
+                - $ref: '#/components/schemas/_problem'
+                discriminator:
+                  propertyName: event
+                  mapping:
+                    data: '#/components/schemas/workspaces.serverLogs.get.response'
+                    problem: '#/components/schemas/_problem'
+      security:
+      - bearerAuth: []
+      operationId: workspaces-serverLogs
+  /workspaces/{workspaceId}/logs/run/{step}/replica/{replica}:
+    get:
+      summary: replicaLogs
+      tags:
+      - workspaces
+      parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: step
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: replica
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Success: Opens a Server Side Event(SSE) stream.'
+          content:
+            text/event-stream:
+              schema:
+                description: 'SSE stream with two event types: "data" and "problem". Both event data contain JSON objects in the form described by their schemas. Possible problem statuses and reasons:400: Workspace is not running, path or request body variable does not match schema. 401: Authorization information is missing or invalid. 404: Workspace is not found.'
+                oneOf:
+                - $ref: '#/components/schemas/workspaces.replicaLogs.get.response'
+                - $ref: '#/components/schemas/_problem'
+                discriminator:
+                  propertyName: event
+                  mapping:
+                    data: '#/components/schemas/workspaces.replicaLogs.get.response'
+                    problem: '#/components/schemas/_problem'
+      security:
+      - bearerAuth: []
+      operationId: workspaces-replicaLogs
+components:
+  schemas:
+    workspaces.serverLogs.get.response:
+      description: An SSE event of type data. Data contains a JSON object with given properties.
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              kind:
+                type: string
+                enum:
+                - E
+                - I
+              data:
+                type: string
+            required:
+            - timestamp
+            - kind
+            - data
+        event:
+          type: string
+          enum:
+          - data
+      required:
+      - data
+      - event
+    workspaces.replicaLogs.get.response:
+      description: An SSE event of type data. Data contains a JSON object with given properties.
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              kind:
+                type: string
+                enum:
+                - E
+                - I
+              data:
+                type: string
+            required:
+            - timestamp
+            - kind
+            - data
+        event:
+          type: string
+          enum:
+          - data
+      required:
+      - data
+      - event
+    _problem:
+      description: An SSE event of type problem. Data contains a JSON object with given properties.
+      properties:
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              enum:
+              - 100
+              - 101
+              - 102
+              - 200
+              - 201
+              - 202
+              - 203
+              - 204
+              - 205
+              - 206
+              - 207
+              - 208
+              - 226
+              - 300
+              - 301
+              - 302
+              - 303
+              - 304
+              - 305
+              - 306
+              - 307
+              - 308
+              - 400
+              - 401
+              - 402
+              - 403
+              - 404
+              - 405
+              - 406
+              - 407
+              - 408
+              - 409
+              - 410
+              - 411
+              - 412
+              - 413
+              - 414
+              - 415
+              - 416
+              - 417
+              - 418
+              - 421
+              - 422
+              - 423
+              - 424
+              - 426
+              - 428
+              - 429
+              - 431
+              - 451
+              - 500
+              - 501
+              - 502
+              - 503
+              - 504
+              - 505
+              - 506
+              - 507
+              - 508
+              - 510
+              - 511
+            title:
+              type: string
+            detail:
+              type: string
+            traceId:
+              type: string
+          required:
+          - status
+          - title
+          - traceId
+        event:
+          type: string
+          enum:
+          - problem
+      required:
+      - data
+      - event
+    workspaces.logs.get.response:
+      description: An SSE event of type data. Data contains a JSON object with given properties.
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              kind:
+                type: string
+                enum:
+                - E
+                - I
+              data:
+                type: string
+            required:
+            - timestamp
+            - kind
+            - data
+        event:
+          type: string
+          enum:
+          - data
+      required:
+      - data
+      - event
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

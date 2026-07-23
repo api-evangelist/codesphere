@@ -1,0 +1,897 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters vault API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: vault
+paths:
+  /vault/teams/{teamId}/shared:
+    get:
+      summary: listSharedVaults
+      description: List all shared vault names for a team
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                description: A list of shared vault names belonging to the team.
+                example:
+                - production-secrets
+                - staging-secrets
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-listSharedVaults
+    post:
+      summary: createSharedVault
+      description: Create an empty shared vault for a team
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the shared vault.
+                  example: my-shared-vault
+              required:
+              - name
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-createSharedVault
+  /vault/teams/{teamId}/shared/{vaultName}:
+    delete:
+      summary: deleteSharedVault
+      description: Delete a shared vault and all its secrets for a team
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: vaultName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the shared vault.
+          example: my-shared-vault
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-deleteSharedVault
+  /vault/teams/{teamId}/shared/{vaultName}/secrets:
+    post:
+      summary: storeSharedSecrets
+      description: Store secrets in a named shared vault
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: vaultName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the shared vault.
+          example: my-shared-vault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A map of secret keys to their values.
+              example:
+                DATABASE_PASSWORD: supersecretpassword
+                API_KEY: '123456789'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A map of secret keys to their revision identifiers. A revision is a combination of a version number and a timestamp.
+                example:
+                  DATABASE_PASSWORD: 1__2026-03-05T10:14:48.490756937Z
+                  API_KEY: 1__2026-03-05T10:14:48.490756937Z
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-storeSharedSecrets
+    delete:
+      summary: deleteSharedSecrets
+      description: Delete one or more named secrets from a shared vault. Deleting all keys does not remove the vault itself.
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: vaultName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the shared vault.
+          example: my-shared-vault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              description: A list of secret keys.
+              example:
+              - DATABASE_PASSWORD
+              - API_KEY
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-deleteSharedSecrets
+  /vault/teams/{teamId}/shared/{vaultName}/generate:
+    post:
+      summary: generateSharedSecrets
+      description: Generate and store secrets in a named shared vault using OpenBao password policies. If the vault does not exist it is created implicitly.
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: vaultName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the shared vault.
+          example: my-shared-vault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A map of secret keys to their password generation policies.
+              example:
+                DATABASE_PASSWORD:
+                  length: 16
+                  rules:
+                  - charset: '123456789'
+                    minChars: 16
+                API_KEY:
+                  length: 32
+                  rules:
+                  - charset: 123456789abcdef
+                    minChars: 32
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A map of secret keys to their values and revision identifiers.
+                example:
+                  DATABASE_PASSWORD:
+                    value: supersecretpassword
+                    revision: 1__2026-03-05T10:14:48.490756937Z
+                  API_KEY:
+                    value: '123456789'
+                    revision: 1__2026-03-05T10:14:48.490756937Z
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-generateSharedSecrets
+  /vault/teams/{teamId}/shared/{vaultName}/keys:
+    get:
+      summary: listSharedSecretKeys
+      description: List secret key names stored in a named shared vault. Values are never returned.
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: vaultName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the shared vault.
+          example: my-shared-vault
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                description: A list of secret keys.
+                example:
+                - DATABASE_PASSWORD
+                - API_KEY
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-listSharedSecretKeys
+  /vault/teams/{teamId}/workspaces/{workspaceId}:
+    post:
+      summary: storeWorkspaceSecrets
+      description: Store secrets in the vault for a given workspace
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A map of secret keys to their values.
+              example:
+                DATABASE_PASSWORD: supersecretpassword
+                API_KEY: '123456789'
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A map of secret keys to their revision identifiers. A revision is a combination of a version number and a timestamp.
+                example:
+                  DATABASE_PASSWORD: 1__2026-03-05T10:14:48.490756937Z
+                  API_KEY: 1__2026-03-05T10:14:48.490756937Z
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-storeWorkspaceSecrets
+    delete:
+      summary: deleteWorkspaceSecrets
+      description: Delete secrets in the vault for a given workspace
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              description: A list of secret keys.
+              example:
+              - DATABASE_PASSWORD
+              - API_KEY
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-deleteWorkspaceSecrets
+  /vault/teams/{teamId}/workspaces/{workspaceId}/keys:
+    get:
+      summary: listWorkspaceSecrets
+      description: List secrets in the vault for a given workspace
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                description: A list of secret keys.
+                example:
+                - DATABASE_PASSWORD
+                - API_KEY
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-listWorkspaceSecrets
+  /vault/teams/{teamId}/workspaces/{workspaceId}/generate:
+    post:
+      summary: generateSecrets
+      description: Generate secrets in the vault for a given workspace based on the provided password policies
+      tags:
+      - vault
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: A map of secret keys to their password generation policies.
+              example:
+                DATABASE_PASSWORD:
+                  length: 16
+                  rules:
+                  - charset: '123456789'
+                    minChars: 16
+                API_KEY:
+                  length: 32
+                  rules:
+                  - charset: 123456789abcdef
+                    minChars: 32
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A map of secret keys to their values and revision identifiers.
+                example:
+                  DATABASE_PASSWORD:
+                    value: supersecretpassword
+                    revision: 1__2026-03-05T10:14:48.490756937Z
+                  API_KEY:
+                    value: '123456789'
+                    revision: 1__2026-03-05T10:14:48.490756937Z
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: vault-generateSecrets
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,554 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters organizations API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: organizations
+paths:
+  /organizations/{organizationId}/members:
+    post:
+      summary: addOrgMember
+      tags:
+      - organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Valid email address
+                  format: email
+                  example: test@example.com
+                role:
+                  type: string
+                  enum:
+                  - admin
+                  - member
+              required:
+              - email
+              - role
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '409':
+          description: User is already an admin or member of the organization.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 409
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-addOrgMember
+    get:
+      summary: listOrgMembers
+      tags:
+      - organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: integer
+                      minimum: 0
+                    organizationId:
+                      type: string
+                      description: UUID
+                      format: uuid
+                      example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                    role:
+                      type: string
+                      enum:
+                      - admin
+                      - member
+                    pending:
+                      type: boolean
+                    createdAt:
+                      type: string
+                      format: date-time
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    avatarUrl:
+                      type: string
+                    deletedAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - userId
+                  - organizationId
+                  - role
+                  - pending
+                  - createdAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-listOrgMembers
+  /organizations/{organizationId}/members/{userId}/role:
+    put:
+      summary: changeOrgRole
+      tags:
+      - organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+                  enum:
+                  - admin
+                  - member
+              required:
+              - role
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '409':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 409
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-changeOrgRole
+  /organizations:
+    get:
+      summary: listOrganizations
+      tags:
+      - organizations
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: UUID
+                      format: uuid
+                      example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                    name:
+                      type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - id
+                  - name
+                  - createdAt
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-listOrganizations
+  /organizations/{organizationId}/teams:
+    get:
+      summary: listOrgTeams
+      tags:
+      - organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    defaultDataCenterId:
+                      type: integer
+                      minimum: 0
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    avatarId:
+                      type: string
+                    avatarUrl:
+                      type: string
+                    isFirst:
+                      type: boolean
+                    createdAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - id
+                  - defaultDataCenterId
+                  - name
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-listOrgTeams
+  /organizations/{organizationId}/members/{userId}:
+    delete:
+      summary: removeOrgMember
+      tags:
+      - organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          description: UUID
+          format: uuid
+          example: 8316ee2f-87f8-424e-b925-7382dc50d662
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '409':
+          description: Team not found, the member is the last admin of one or more teams in the organization; assign another admin to those teams or remove the member from them first.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 409
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: organizations-removeOrgMember
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

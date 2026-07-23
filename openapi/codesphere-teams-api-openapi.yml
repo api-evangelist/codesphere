@@ -1,0 +1,922 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters teams API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: teams
+paths:
+  /teams/{teamId}:
+    get:
+      summary: getTeam
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    minimum: 0
+                  defaultDataCenterId:
+                    type: integer
+                    minimum: 0
+                  name:
+                    type: string
+                  description:
+                    type: string
+                    nullable: true
+                  avatarId:
+                    type: string
+                    nullable: true
+                  avatarUrl:
+                    type: string
+                    nullable: true
+                  isFirst:
+                    type: boolean
+                  organizationId:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                required:
+                - id
+                - defaultDataCenterId
+                - name
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-getTeam
+    delete:
+      summary: deleteTeam
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-deleteTeam
+  /teams:
+    get:
+      summary: listTeams
+      tags:
+      - teams
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      minimum: 0
+                    defaultDataCenterId:
+                      type: integer
+                      minimum: 0
+                    name:
+                      type: string
+                    description:
+                      type: string
+                      nullable: true
+                    avatarId:
+                      type: string
+                      nullable: true
+                    avatarUrl:
+                      type: string
+                      nullable: true
+                    isFirst:
+                      type: boolean
+                    organizationId:
+                      type: string
+                      description: UUID
+                      format: uuid
+                      example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                    role:
+                      type: integer
+                      enum:
+                      - 0
+                      - 1
+                      description: The role assigned to the team. 0 = Admin, 1 = Member.
+                      example: 1
+                  required:
+                  - id
+                  - defaultDataCenterId
+                  - name
+                  - role
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-listTeams
+    post:
+      summary: createTeam
+      tags:
+      - teams
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                dc:
+                  type: integer
+                  minimum: 0
+                organizationId:
+                  type: string
+                  description: UUID
+                  format: uuid
+                  example: 8316ee2f-87f8-424e-b925-7382dc50d662
+              required:
+              - name
+              - dc
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    minimum: 0
+                  defaultDataCenterId:
+                    type: integer
+                    minimum: 0
+                  name:
+                    type: string
+                  description:
+                    type: string
+                    nullable: true
+                  avatarId:
+                    type: string
+                    nullable: true
+                  avatarUrl:
+                    type: string
+                    nullable: true
+                  isFirst:
+                    type: boolean
+                  organizationId:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                required:
+                - id
+                - defaultDataCenterId
+                - name
+        '400':
+          description: Invalid datacenter, standalone team creation not allowed, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: User is not part of the organization, authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-createTeam
+  /teams/{teamId}/migrate:
+    post:
+      summary: migrateTeamToOrg
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationId:
+                  type: string
+                  format: uuid
+                  description: The unique identifier of the organization where the team will be moved.
+                force:
+                  type: boolean
+                  description: '(Default: false) Set to true to force migration despite membership mismatches. Warning: Users not belonging to the target organization will be stripped from the team.'
+              example:
+                organizationId: 123e4567-e89b-12d3-a456-426614174000
+                force: true
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Team members who are not organization members were found during team migration, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-migrateTeamToOrg
+  /teams/{teamId}/members:
+    post:
+      summary: inviteMember
+      description: Invite a user to a team by email
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userEmail:
+                  type: string
+                role:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: The role assigned to the team. 0 = Admin, 1 = Member.
+                  example: 1
+              required:
+              - userEmail
+              - role
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '402':
+          description: Not enough seats to add more team members.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 402
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-inviteMember
+    get:
+      summary: listMembers
+      description: List all members associated with a team
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: integer
+                      minimum: 0
+                    teamId:
+                      type: integer
+                      minimum: 0
+                    role:
+                      type: integer
+                      enum:
+                      - 0
+                      - 1
+                      description: The role assigned to the team. 0 = Admin, 1 = Member.
+                      example: 1
+                    pending:
+                      type: boolean
+                    createdAt:
+                      type: string
+                      format: date-time
+                    name:
+                      type: string
+                      nullable: true
+                    email:
+                      type: string
+                      nullable: true
+                    avatarUrl:
+                      type: string
+                      nullable: true
+                    deletedAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - userId
+                  - teamId
+                  - role
+                  - pending
+                  - createdAt
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '500':
+          description: Failed to fetch team members.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 500
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-listMembers
+  /teams/{teamId}/members/{userId}/role:
+    put:
+      summary: changeRole
+      description: Change the role of a team member
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: The role assigned to the team. 0 = Admin, 1 = Member.
+                  example: 1
+              required:
+              - role
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Team not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '409':
+          description: Cannot change role because the user is the last admin.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 409
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-changeRole
+  /teams/{teamId}/members/{userId}:
+    delete:
+      summary: removeMember
+      description: Remove a member from a team
+      tags:
+      - teams
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: teams-removeMember
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

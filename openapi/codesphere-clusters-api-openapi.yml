@@ -1,0 +1,223 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: clusters
+paths:
+  /clusters/organizations:
+    get:
+      summary: listAllOrganizations
+      tags:
+      - clusters
+      parameters: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: UUID
+                      format: uuid
+                      example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                    name:
+                      type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                  required:
+                  - id
+                  - name
+                  - createdAt
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: clusters-listAllOrganizations
+    post:
+      summary: createOrganization
+      tags:
+      - clusters
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                adminEmail:
+                  type: string
+                  description: Valid email address
+                  format: email
+                  example: test@example.com
+              required:
+              - name
+              - adminEmail
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                    format: uuid
+                    example: 8316ee2f-87f8-424e-b925-7382dc50d662
+                  name:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                required:
+                - id
+                - name
+                - createdAt
+        '400':
+          description: Admin account is deactivated, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: clusters-createOrganization
+  /clusters/admins:
+    post:
+      summary: addClusterAdmin
+      tags:
+      - clusters
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Valid email address
+                  format: email
+                  example: test@example.com
+              required:
+              - email
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Account is deactivated, path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: clusters-addClusterAdmin
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,1023 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters domains API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: domains
+paths:
+  /domains/team/{teamId}/domain/{domainName}:
+    get:
+      summary: getDomain
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  workspaces:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                  name:
+                    type: string
+                  certificateRequestStatus:
+                    type: object
+                    properties:
+                      issued:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - issued
+                    - reason
+                  dnsEntries:
+                    type: object
+                    properties:
+                      a:
+                        type: string
+                      cname:
+                        type: string
+                      txt:
+                        type: string
+                    required:
+                    - a
+                    - cname
+                    - txt
+                  domainVerificationStatus:
+                    type: object
+                    properties:
+                      verified:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - verified
+                    - reason
+                  customConfigRevision:
+                    type: integer
+                    minimum: 0
+                  customConfig:
+                    type: object
+                    properties:
+                      maxBodySizeMb:
+                        type: number
+                      maxConnectionTimeoutS:
+                        type: number
+                      useRegex:
+                        type: boolean
+                  restricted:
+                    type: boolean
+                required:
+                - teamId
+                - dataCenterId
+                - workspaces
+                - name
+                - certificateRequestStatus
+                - dnsEntries
+                - domainVerificationStatus
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-getDomain
+    post:
+      summary: createDomain
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  workspaces:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                  name:
+                    type: string
+                  certificateRequestStatus:
+                    type: object
+                    properties:
+                      issued:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - issued
+                    - reason
+                  dnsEntries:
+                    type: object
+                    properties:
+                      a:
+                        type: string
+                      cname:
+                        type: string
+                      txt:
+                        type: string
+                    required:
+                    - a
+                    - cname
+                    - txt
+                  domainVerificationStatus:
+                    type: object
+                    properties:
+                      verified:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - verified
+                    - reason
+                  customConfigRevision:
+                    type: integer
+                    minimum: 0
+                  customConfig:
+                    type: object
+                    properties:
+                      maxBodySizeMb:
+                        type: number
+                      maxConnectionTimeoutS:
+                        type: number
+                      useRegex:
+                        type: boolean
+                  restricted:
+                    type: boolean
+                required:
+                - teamId
+                - dataCenterId
+                - workspaces
+                - name
+                - certificateRequestStatus
+                - dnsEntries
+                - domainVerificationStatus
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-createDomain
+    patch:
+      summary: updateDomain
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maxBodySizeMb:
+                  type: number
+                maxConnectionTimeoutS:
+                  type: number
+                useRegex:
+                  type: boolean
+                restricted:
+                  type: boolean
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  workspaces:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                  name:
+                    type: string
+                  certificateRequestStatus:
+                    type: object
+                    properties:
+                      issued:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - issued
+                    - reason
+                  dnsEntries:
+                    type: object
+                    properties:
+                      a:
+                        type: string
+                      cname:
+                        type: string
+                      txt:
+                        type: string
+                    required:
+                    - a
+                    - cname
+                    - txt
+                  domainVerificationStatus:
+                    type: object
+                    properties:
+                      verified:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - verified
+                    - reason
+                  customConfigRevision:
+                    type: integer
+                    minimum: 0
+                  customConfig:
+                    type: object
+                    properties:
+                      maxBodySizeMb:
+                        type: number
+                      maxConnectionTimeoutS:
+                        type: number
+                      useRegex:
+                        type: boolean
+                  restricted:
+                    type: boolean
+                required:
+                - teamId
+                - dataCenterId
+                - workspaces
+                - name
+                - certificateRequestStatus
+                - dnsEntries
+                - domainVerificationStatus
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '409':
+          description: Another request is in progress.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 409
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-updateDomain
+    delete:
+      summary: deleteDomain
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      responses:
+        '200':
+          description: Success.
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-deleteDomain
+  /domains/team/{teamId}:
+    get:
+      summary: listDomains
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    teamId:
+                      type: integer
+                      minimum: 0
+                    dataCenterId:
+                      type: integer
+                      minimum: 0
+                    workspaces:
+                      type: object
+                      additionalProperties:
+                        type: array
+                        items:
+                          type: integer
+                          minimum: 0
+                    name:
+                      type: string
+                    certificateRequestStatus:
+                      type: object
+                      properties:
+                        issued:
+                          type: boolean
+                        reason:
+                          type: string
+                          nullable: true
+                      required:
+                      - issued
+                      - reason
+                    dnsEntries:
+                      type: object
+                      properties:
+                        a:
+                          type: string
+                        cname:
+                          type: string
+                        txt:
+                          type: string
+                      required:
+                      - a
+                      - cname
+                      - txt
+                    domainVerificationStatus:
+                      type: object
+                      properties:
+                        verified:
+                          type: boolean
+                        reason:
+                          type: string
+                          nullable: true
+                      required:
+                      - verified
+                      - reason
+                    customConfigRevision:
+                      type: integer
+                      minimum: 0
+                    customConfig:
+                      type: object
+                      properties:
+                        maxBodySizeMb:
+                          type: number
+                        maxConnectionTimeoutS:
+                          type: number
+                        useRegex:
+                          type: boolean
+                    restricted:
+                      type: boolean
+                  required:
+                  - teamId
+                  - dataCenterId
+                  - workspaces
+                  - name
+                  - certificateRequestStatus
+                  - dnsEntries
+                  - domainVerificationStatus
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-listDomains
+  /domains/team/{teamId}/domain/{domainName}/verify:
+    post:
+      summary: verifyDomain
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  verified:
+                    type: boolean
+                  reason:
+                    type: string
+                    nullable: true
+                required:
+                - verified
+                - reason
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-verifyDomain
+  /domains/team/{teamId}/domain/{domainName}/workspace-connections:
+    put:
+      summary: updateWorkspaceConnections
+      tags:
+      - domains
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: domainName
+        in: path
+        required: true
+        schema:
+          type: string
+          description: A valid FQDN.
+          example: foo.example.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: integer
+                  minimum: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  teamId:
+                    type: integer
+                    minimum: 0
+                  dataCenterId:
+                    type: integer
+                    minimum: 0
+                  workspaces:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                  name:
+                    type: string
+                  certificateRequestStatus:
+                    type: object
+                    properties:
+                      issued:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - issued
+                    - reason
+                  dnsEntries:
+                    type: object
+                    properties:
+                      a:
+                        type: string
+                      cname:
+                        type: string
+                      txt:
+                        type: string
+                    required:
+                    - a
+                    - cname
+                    - txt
+                  domainVerificationStatus:
+                    type: object
+                    properties:
+                      verified:
+                        type: boolean
+                      reason:
+                        type: string
+                        nullable: true
+                    required:
+                    - verified
+                    - reason
+                  customConfigRevision:
+                    type: integer
+                    minimum: 0
+                  customConfig:
+                    type: object
+                    properties:
+                      maxBodySizeMb:
+                        type: number
+                      maxConnectionTimeoutS:
+                        type: number
+                      useRegex:
+                        type: boolean
+                  restricted:
+                    type: boolean
+                required:
+                - teamId
+                - dataCenterId
+                - workspaces
+                - name
+                - certificateRequestStatus
+                - dnsEntries
+                - domainVerificationStatus
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 404
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: domains-updateWorkspaceConnections
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

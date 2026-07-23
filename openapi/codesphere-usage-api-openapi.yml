@@ -1,0 +1,326 @@
+openapi: 3.0.0
+info:
+  title: Codesphere Public clusters usage API
+  version: 0.1.0
+servers:
+- url: https://cloud.codesphere.com/api
+tags:
+- name: usage
+paths:
+  /usage/teams/{teamId}/resources/landscape-service/summary:
+    get:
+      summary: getUsageSummaryLandscape
+      description: Get the usage summary of all Landscape Services for a team over the specified time period.
+      tags:
+      - usage
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: beginDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: endDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Limits the number of items in the response.
+          minimum: 1
+          maximum: 100
+          default: 25
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Starting index within the collection of items.
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalItems:
+                    type: integer
+                    minimum: 0
+                  limit:
+                    type: integer
+                    description: Limits the number of items in the response.
+                    minimum: 1
+                    maximum: 100
+                    default: 25
+                  offset:
+                    type: integer
+                    description: Starting index within the collection of items.
+                    minimum: 0
+                    default: 0
+                  beginDate:
+                    type: string
+                    format: date-time
+                  endDate:
+                    type: string
+                    format: date-time
+                  summary:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resourceId:
+                          type: string
+                        resourceName:
+                          type: string
+                        usageSeconds:
+                          type: number
+                        planName:
+                          type: string
+                        alwaysOn:
+                          type: boolean
+                        replicas:
+                          type: integer
+                          minimum: 1
+                        type:
+                          type: string
+                      required:
+                      - resourceId
+                      - resourceName
+                      - usageSeconds
+                      - planName
+                      - alwaysOn
+                      - replicas
+                      - type
+                required:
+                - totalItems
+                - beginDate
+                - endDate
+                - summary
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: usage-getUsageSummaryLandscape
+  /usage/teams/{teamId}/resources/landscape-service/{resourceId}/events:
+    get:
+      summary: getLandscapeServiceEvents
+      description: Returns Audit-Events for a specific Landscape Service.
+      tags:
+      - usage
+      parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+      - name: resourceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: beginDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: endDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Limits the number of items in the response.
+          minimum: 1
+          maximum: 100
+          default: 25
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: Starting index within the collection of items.
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalItems:
+                    type: integer
+                    minimum: 0
+                  limit:
+                    type: integer
+                    description: Limits the number of items in the response.
+                    minimum: 1
+                    maximum: 100
+                    default: 25
+                  offset:
+                    type: integer
+                    description: Starting index within the collection of items.
+                    minimum: 0
+                    default: 0
+                  beginDate:
+                    type: string
+                    format: date-time
+                  endDate:
+                    type: string
+                    format: date-time
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          minimum: 0
+                        initiatorId:
+                          type: string
+                        initiatorEmail:
+                          type: string
+                        resourceId:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        action:
+                          type: string
+                          enum:
+                          - start
+                          - stop
+                        alwaysOn:
+                          type: boolean
+                        replicas:
+                          type: integer
+                          minimum: 1
+                        serviceName:
+                          type: string
+                      required:
+                      - id
+                      - initiatorId
+                      - initiatorEmail
+                      - resourceId
+                      - date
+                      - action
+                      - alwaysOn
+                      - replicas
+                      - serviceName
+                required:
+                - totalItems
+                - beginDate
+                - endDate
+                - events
+        '400':
+          description: Path or request body variable does not match schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 400
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    enum:
+                    - 401
+                  title:
+                    type: string
+                  detail:
+                    type: string
+                  traceId:
+                    type: string
+                required:
+                - status
+                - title
+                - traceId
+      security:
+      - bearerAuth: []
+      operationId: usage-getLandscapeServiceEvents
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
