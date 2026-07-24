@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.codesphere.com/apis-and-automations/cli-command-reference
+name: cs
+repo: https://github.com/codesphere-cloud/cs-go
+language: go
+docs: https://docs.codesphere.com/apis-and-automations/getting-started-cli
+api_base: https://cloud.codesphere.com/api
+auth:
+  env: CS_TOKEN
+  token_source: https://cloud.codesphere.com/ (User Settings > API Keys)
+  api_override: CS_API / --api / -a
+install:
+- method: github-release-linux
+  command: gh release download -R codesphere-cloud/cs-go -O /usr/local/bin/cs -p "*linux_amd64" && chmod +x /usr/local/bin/cs
+- method: github-release-macos-arm
+  command: gh release download -R codesphere-cloud/cs-go -O /usr/local/bin/cs -p "*darwin_arm64" && chmod +x /usr/local/bin/cs
+- method: self-update
+  command: cs update
+global_flags:
+- name: --team / -t
+  description: Specify the team ID.
+- name: --workspace / -w
+  description: Specify the workspace ID.
+- name: --api / -a
+  description: Override the API endpoint (default https://cloud.codesphere.com/api).
+commands:
+- name: create
+  description: Create a Codesphere resource (e.g. workspaces, teams).
+- name: delete
+  description: Delete Codesphere resources.
+- name: list
+  description: List current resources and workloads.
+- name: sync
+  description: Sync Codesphere resources.
+- name: start
+  description: Start a workspace pipeline (prepare or run stages).
+- name: exec
+  description: Run a command directly inside a Codesphere workspace.
+- name: curl
+  description: Send authenticated HTTP requests to a workspace's dev domain.
+- name: git
+  description: Interact with the git repository of the workspace.
+- name: log
+  description: Retrieve run logs from services for debugging.
+- name: monitor
+  description: Monitor a command and report back health and status information.
+- name: open
+  description: Open the target workspace within the Codesphere IDE.
+- name: wake-up
+  description: Wake up an inactive or sleeping on-demand workspace.
+- name: set-env
+  description: Set or update environment variables.
+- name: generate
+  description: Generate Kubernetes artifacts based on the current workspace for exporting.
+- name: completion
+  description: Generate the shell autocompletion script (bash, zsh, fish, powershell).
+- name: licenses
+  description: Print license information.
+- name: update
+  description: Update the Codesphere CLI to the latest version.
+- name: version
+  description: Print the currently installed version of the CLI.

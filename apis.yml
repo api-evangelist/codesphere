@@ -1,9 +1,31 @@
 aid: codesphere
 name: Codesphere
-description: 'Codesphere is a company surfaced as a portfolio company of creandum and added to the API
-  Evangelist network as a stub for enrichment. Sector: saas. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Codesphere is a European-built sovereign cloud platform that lets organizations
+  deploy and operate applications across on-premises, hybrid, and public-cloud
+  infrastructure from a single control layer, without Kubernetes expertise or
+  vendor lock-in. Its Public API manages workspaces, CI/deploy pipelines,
+  landscapes, managed services (PostgreSQL, Valkey, OpenSearch, RabbitMQ,
+  DocumentDB, object storage, virtual Kubernetes clusters), custom domains,
+  teams, organizations, secret vaults, SSH keys, and usage. A first-party `cs`
+  CLI, a Go managed-services SDK, a GitHub deploy Action, and a VS Code
+  extension wrap the same REST contract. Codesphere is ISO 27001 certified and
+  SOC 1 & 2 attested. Surfaced as a portfolio company of Creandum and enriched
+  from its own public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/codesphere/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/66959440?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,11 +34,139 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Saas
-apis: []
+- Cloud
+- Deployment
+- Developer Tools
+- Platform as a Service
+- Infrastructure
+- Sovereign Cloud
+- CI/CD
+- Managed Services
+apis:
+- aid: codesphere:codesphere-clusters-api
+  name: Codesphere clusters API
+  description: The clusters API from Codesphere — 2 operation(s) for clusters.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-clusters-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-domains-api
+  name: Codesphere domains API
+  description: The domains API from Codesphere — 4 operation(s) for domains.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - domains
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-domains-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-managed-services-api
+  name: Codesphere managed-services API
+  description: The managed-services API from Codesphere — 5 operation(s) for managed-services.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - managed-services
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-managed-services-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-metadata-api
+  name: Codesphere metadata API
+  description: The metadata API from Codesphere — 3 operation(s) for metadata.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-metadata-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-organizations-api
+  name: Codesphere organizations API
+  description: The organizations API from Codesphere — 5 operation(s) for organizations.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-organizations-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-ssh-api
+  name: Codesphere ssh API
+  description: The ssh API from Codesphere — 1 operation(s) for ssh.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - ssh
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-ssh-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-teams-api
+  name: Codesphere teams API
+  description: The teams API from Codesphere — 6 operation(s) for teams.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - teams
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-teams-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-usage-api
+  name: Codesphere usage API
+  description: The usage API from Codesphere — 2 operation(s) for usage.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - usage
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-usage-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-vault-api
+  name: Codesphere vault API
+  description: The vault API from Codesphere — 8 operation(s) for vault.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - vault
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-vault-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
+- aid: codesphere:codesphere-workspaces-api
+  name: Codesphere workspaces API
+  description: The workspaces API from Codesphere — 21 operation(s) for workspaces.
+  humanURL: https://docs.codesphere.com/apis-and-automations/public-api
+  baseURL: https://cloud.codesphere.com/api
+  tags:
+  - workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/codesphere-workspaces-api-openapi.yml
+  - type: APIReference
+    url: https://cloud.codesphere.com/api/swagger-ui
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +175,78 @@ maintainers:
 common:
 - type: Website
   url: https://codesphere.com/
+- type: DeveloperPortal
+  url: https://docs.codesphere.com
+- type: Documentation
+  url: https://docs.codesphere.com
+- type: APIReference
+  url: https://cloud.codesphere.com/api/swagger-ui
+- type: GettingStarted
+  url: https://docs.codesphere.com/getting-started
+- type: Support
+  url: mailto:support@codesphere.com
+- type: Blog
+  url: https://codesphere.com/blog
+- type: GitHubOrganization
+  url: https://github.com/codesphere-cloud
+- type: StatusPage
+  url: https://status.codesphere.com
+- type: TermsOfService
+  url: https://codesphere.com/terms
+- type: PrivacyPolicy
+  url: https://www.codesphere.com/privacy-policy
+- type: SignUp
+  url: https://cloud.codesphere.com/
+- type: Compliance
+  url: https://www.codesphere.com/security
+- type: TrustCenter
+  url: security/codesphere-trust-center.yml
+- type: Security
+  url: security/codesphere-vulnerability-disclosure.yml
+- type: VulnerabilityDisclosure
+  url: security/codesphere-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/codesphere-domain-security.yml
+- type: CLI
+  url: cli/codesphere-cli.yml
+- type: SDKs
+  url: packages/codesphere-packages.yml
+- type: Packages
+  url: packages/codesphere-packages.yml
+- type: MCPServer
+  url: mcp/codesphere-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/codesphere-authentication.yml
+- type: AgenticAccess
+  url: agentic-access/codesphere-agentic-access.yml
+- type: Conventions
+  url: conventions/codesphere-conventions.yml
+- type: ChangeLog
+  url: changelog/codesphere-changelog.yml
+- type: Lifecycle
+  url: lifecycle/codesphere-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/codesphere-problem-types.yml
+- type: Conformance
+  url: conformance/codesphere-conformance.yml
+- type: DataModel
+  url: data-model/codesphere-data-model.yml
+- type: WellKnown
+  url: well-known/codesphere-well-known.yml
+- type: SecurityTxt
+  url: well-known/codesphere-security.txt
+- type: LLMsTxt
+  url: llms/codesphere-llms.txt
+- type: Arazzo
+  name: Deploy an application to a Codesphere workspace
+  url: arazzo/codesphere-deploy-workspace.yml
+- type: Arazzo
+  name: Provision a Codesphere managed service
+  url: arazzo/codesphere-provision-managed-service.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

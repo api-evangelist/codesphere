@@ -1,0 +1,42 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/codesphere-openapi-original.json
+format: problem-details
+envelope:
+  media_type: application/json
+  description: >-
+    Error responses return a problem object with status (HTTP code), title,
+    an optional human-readable detail, and a traceId for support correlation.
+  fields: [status, title, detail, traceId]
+  required: [status, title, traceId]
+problems:
+- status: 400
+  title: Bad Request
+  description: Admin account is deactivated, path or request body variable does not match schema.
+  occurrences: 68
+  example_operations: [clusters-createOrganization, clusters-addClusterAdmin, domains-getDomain]
+- status: 401
+  title: Unauthorized
+  description: Authorization information is missing or invalid.
+  occurrences: 77
+  example_operations: [clusters-listAllOrganizations, clusters-createOrganization, clusters-addClusterAdmin]
+- status: 402
+  title: Payment Required
+  description: Not enough seats to add more team members.
+  occurrences: 1
+  example_operations: [teams-inviteMember]
+- status: 404
+  title: Not Found
+  description: Domain not found.
+  occurrences: 36
+  example_operations: [domains-getDomain, domains-updateDomain, domains-deleteDomain]
+- status: 409
+  title: Conflict
+  description: Another request is in progress.
+  occurrences: 6
+  example_operations: [domains-updateDomain, organizations-addOrgMember, organizations-changeOrgRole]
+- status: 500
+  title: Internal Server Error
+  description: Failed to fetch team members.
+  occurrences: 1
+  example_operations: [teams-listMembers]

@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/codesphere-openapi-original.json
+skills:
+- file: codesphere-deploy-workspace.md
+  name: Deploy an application to a Codesphere workspace
+  api: openapi/codesphere-openapi-original.json
+  operations: [workspaces-createWorkspace, workspaces-startPipelineStage, workspaces-pipelineStatus, workspaces-getWorkspaceStatus]
+- file: codesphere-provision-managed-service.md
+  name: Provision a Codesphere managed service
+  api: openapi/codesphere-openapi-original.json
+  operations: [managed-services-listProviders, managed-services-create, managed-services-getDetails, managed-services-list]
+- file: codesphere-connect-domain.md
+  name: Connect and verify a custom domain
+  api: openapi/codesphere-openapi-original.json
+  operations: [domains-createDomain, domains-verifyDomain, domains-updateWorkspaceConnections, domains-getDomain]

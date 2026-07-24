@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/codesphere-openapi-original.json
+docs: https://docs.codesphere.com/apis-and-automations/public-api
+description: >-
+  Cross-cutting request/response conventions for the Codesphere Public API,
+  derived from the OpenAPI definition and the public-api documentation.
+authentication:
+  style: bearer
+  scheme: 'Personal Access Token (PAT) supplied as Authorization: Bearer <token>'
+  token_source: https://docs.codesphere.com/user-settings/api-keys
+  ref: authentication/codesphere-authentication.yml
+pagination:
+  style: limit-offset
+  params: [limit, offset]
+  notes: >-
+    List/usage endpoints accept `limit` and `offset` query parameters; usage
+    endpoints additionally accept `beginDate`/`endDate` (and `includeDeleted`)
+    filters.
+idempotency:
+  supported: false
+  notes: >-
+    The Codesphere Public API does not document an idempotency-key header, and
+    no such parameter appears in the OpenAPI definition.
+request_tracing:
+  field: traceId
+  location: error-response body
+  notes: Every error object carries a `traceId` for support correlation.
+error_envelope:
+  media_type: application/json
+  fields: [status, title, detail, traceId]
+  ref: errors/codesphere-problem-types.yml
+streaming:
+  media_type: text/event-stream
+  notes: >-
+    Log endpoints (workspace, server, replica logs) stream Server-Sent Events;
+    `problem` SSE events carry the same status/title/detail/traceId shape.
+versioning:
+  scheme: unversioned-path
+  current: '0.1.0'
+  base_url: https://cloud.codesphere.com/api
+  notes: >-
+    The public API reports info.version 0.1.0 and is served under a single
+    unversioned `/api` base path.
+rate_limiting:
+  documented: false

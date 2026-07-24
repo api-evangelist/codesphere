@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/codesphere-cloud/cs-go/releases
+scope: cli
+notes: >-
+  Codesphere publishes a dated release changelog for its `cs` CLI (cs-go) via
+  GitHub Releases. The public REST API itself reports info.version 0.1.0 and
+  does not publish a separate dated API changelog.
+scheme: semver
+current_version: v1.7.1
+entries:
+- version: v1.7.1
+  date: '2026-07-13'
+- version: v1.7.0
+  date: '2026-07-08'
+- version: v1.6.0
+  date: '2026-07-08'
+- version: v1.5.0
+  date: '2026-07-07'
+- version: v1.4.0
+  date: '2026-07-05'
+- version: v1.3.0
+  date: '2026-06-30'
+- version: v1.2.0
+  date: '2026-06-26'
+- version: v1.1.1
+  date: '2026-05-15'

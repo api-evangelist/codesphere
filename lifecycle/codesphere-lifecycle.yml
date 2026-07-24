@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/codesphere-openapi-original.json
+versioning:
+  scheme: unversioned-path
+  current: '0.1.0'
+  base_url: https://cloud.codesphere.com/api
+  docs: https://docs.codesphere.com/apis-and-automations/public-api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public API deprecation policy or Sunset/Deprecation header support was found.
+sla:
+  url: null
+status_page: https://status.codesphere.com
+deprecated_operations: []
+docs_versioning:
+  notes: >-
+    The documentation site is versioned (e.g. /1.67.x, /1.89.x paths) tracking
+    the Codesphere platform release train.

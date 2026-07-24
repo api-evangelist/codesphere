@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/codesphere-cloud
+notes: >-
+  Codesphere distributes its first-party client tooling through the
+  codesphere-cloud GitHub organization (release binaries + Go modules) rather
+  than language package registries. No npm / PyPI / crates.io packages were
+  found under the Codesphere name.
+packages:
+- language: go
+  registry: github
+  name: cs-go
+  url: https://github.com/codesphere-cloud/cs-go
+  install: gh release download -R codesphere-cloud/cs-go -O /usr/local/bin/cs -p "*linux_amd64"
+  official: true
+  kind: cli
+  description: >-
+    The `cs` command-line interface for Codesphere, plus an embedded
+    OpenAPI-generated Go client (api/openapi_client) for the public API.
+- language: go
+  registry: github
+  name: managed-services-lib
+  url: https://github.com/codesphere-cloud/managed-services-lib
+  install: go get github.com/codesphere-cloud/managed-services-lib
+  official: true
+  kind: sdk
+  description: >-
+    Core Go library for building Codesphere managed-service provider backends;
+    implement the provider interface and the library serves it over the
+    Codesphere REST contract.
+- language: javascript
+  registry: github
+  name: gh-action-deploy
+  url: https://github.com/codesphere-cloud/gh-action-deploy
+  install: 'uses: codesphere-cloud/gh-action-deploy@v1'
+  official: true
+  kind: github-action
+  description: GitHub Action that deploys a repository to Codesphere.
+- language: typescript
+  registry: github
+  name: vscode-extension
+  url: https://github.com/codesphere-cloud/vscode-extension
+  install: Install "Codesphere" from the VS Code Marketplace
+  official: true
+  kind: editor-extension
+  description: VS Code extension to use Codesphere workspaces from a local editor.

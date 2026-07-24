@@ -1,0 +1,32 @@
+{
+  "provider": "codesphere",
+  "sources": [
+    "codesphere-clusters-api-openapi.yml",
+    "codesphere-domains-api-openapi.yml",
+    "codesphere-managed-services-api-openapi.yml",
+    "codesphere-metadata-api-openapi.yml",
+    "codesphere-organizations-api-openapi.yml",
+    "codesphere-ssh-api-openapi.yml",
+    "codesphere-teams-api-openapi.yml",
+    "codesphere-usage-api-openapi.yml",
+    "codesphere-vault-api-openapi.yml",
+    "codesphere-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "codesphere-clusters-api-openapi.yml",
+    "codesphere-domains-api-openapi.yml",
+    "codesphere-managed-services-api-openapi.yml",
+    "codesphere-metadata-api-openapi.yml",
+    "codesphere-organizations-api-openapi.yml",
+    "codesphere-ssh-api-openapi.yml",
+    "codesphere-teams-api-openapi.yml",
+    "codesphere-usage-api-openapi.yml",
+    "codesphere-vault-api-openapi.yml",
+    "codesphere-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

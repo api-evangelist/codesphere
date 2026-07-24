@@ -1,0 +1,37 @@
+arazzo: 1.0.1
+info:
+  title: Provision a Codesphere managed service
+  version: 1.0.0
+  summary: Discover providers, create a managed service, and confirm it is running.
+sourceDescriptions:
+- name: codesphere
+  url: ../openapi/codesphere-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: provision-managed-service
+  summary: List providers, create a managed service, and poll its status.
+  inputs:
+    type: object
+    properties:
+      teamId: { type: integer }
+      provider: { type: string }
+      plan: { type: string }
+  steps:
+  - stepId: listProviders
+    operationId: managed-services-listProviders
+  - stepId: create
+    operationId: managed-services-create
+    requestBody:
+      contentType: application/json
+      payload:
+        team: $inputs.teamId
+        provider: $inputs.provider
+        plan: $inputs.plan
+    outputs:
+      serviceId: $response.body#/id
+  - stepId: getDetails
+    operationId: managed-services-getDetails
+    parameters:
+    - name: id
+      in: path
+      value: $steps.create.outputs.serviceId

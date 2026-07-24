@@ -1,0 +1,59 @@
+arazzo: 1.0.1
+info:
+  title: Deploy an application to a Codesphere workspace
+  version: 1.0.0
+  summary: Create a workspace, run the prepare and run pipeline stages, and confirm it is live.
+sourceDescriptions:
+- name: codesphere
+  url: ../openapi/codesphere-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: deploy-workspace
+  summary: Create a workspace and deploy it through the CI pipeline.
+  inputs:
+    type: object
+    properties:
+      teamId: { type: integer }
+      workspaceId: { type: integer }
+  steps:
+  - stepId: createWorkspace
+    operationId: workspaces-createWorkspace
+    requestBody:
+      contentType: application/json
+      payload:
+        teamId: $inputs.teamId
+    outputs:
+      workspaceId: $response.body#/id
+  - stepId: prepare
+    operationId: workspaces-startPipelineStage
+    parameters:
+    - name: workspaceId
+      in: path
+      value: $steps.createWorkspace.outputs.workspaceId
+    - name: stage
+      in: path
+      value: prepare
+  - stepId: pipelineStatus
+    operationId: workspaces-pipelineStatus
+    parameters:
+    - name: workspaceId
+      in: path
+      value: $steps.createWorkspace.outputs.workspaceId
+    - name: stage
+      in: path
+      value: prepare
+  - stepId: run
+    operationId: workspaces-startPipelineStage
+    parameters:
+    - name: workspaceId
+      in: path
+      value: $steps.createWorkspace.outputs.workspaceId
+    - name: stage
+      in: path
+      value: run
+  - stepId: status
+    operationId: workspaces-getWorkspaceStatus
+    parameters:
+    - name: workspaceId
+      in: path
+      value: $steps.createWorkspace.outputs.workspaceId

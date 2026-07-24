@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/codesphere-openapi-original.json
+workflows:
+- file: codesphere-deploy-workspace.yml
+  workflowId: deploy-workspace
+  title: Deploy an application to a Codesphere workspace
+  summary: Create a workspace, run the prepare and run pipeline stages, and confirm it is live.
+- file: codesphere-provision-managed-service.yml
+  workflowId: provision-managed-service
+  title: Provision a Codesphere managed service
+  summary: Discover providers, create a managed service, and poll its status.

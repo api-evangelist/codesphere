@@ -1,0 +1,72 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/codesphere-openapi-original.json
+description: >-
+  Entity-relationship graph derived from the Codesphere Public API path
+  hierarchy and id-reference path parameters.
+entities:
+- name: organization
+  id_field: organizationId
+  tag: organizations
+- name: team
+  id_field: teamId
+  tag: teams
+- name: workspace
+  id_field: workspaceId
+  tag: workspaces
+- name: domain
+  id_field: domainName
+  tag: domains
+- name: managed_service
+  id_field: id
+  tag: managed-services
+- name: vault
+  id_field: vaultName
+  tag: vault
+- name: ssh_key
+  id_field: key
+  tag: ssh
+- name: user
+  id_field: userId
+  tag: organizations
+relationships:
+- from: organization
+  to: team
+  kind: has_many
+  via: organizationId
+- from: organization
+  to: user
+  kind: has_many
+  via: members
+- from: team
+  to: workspace
+  kind: has_many
+  via: teamId
+- from: team
+  to: domain
+  kind: has_many
+  via: teamId
+- from: team
+  to: vault
+  kind: has_many
+  via: teamId (shared vault)
+- from: team
+  to: user
+  kind: has_many
+  via: members
+- from: workspace
+  to: vault
+  kind: has_one
+  via: workspaceId (workspace secrets)
+- from: workspace
+  to: domain
+  kind: has_many
+  via: workspace-connections
+- from: workspace
+  to: pipeline
+  kind: has_one
+  via: pipeline stages (prepare/run)
+- from: managed_service
+  to: team
+  kind: belongs_to
+  via: team
