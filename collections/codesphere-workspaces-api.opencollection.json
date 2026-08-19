@@ -1,0 +1,660 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codesphere Public clusters workspaces API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getWorkspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "getWorkspace"
+        },
+        {
+          "info": {
+            "name": "updateWorkspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "updateWorkspace"
+        },
+        {
+          "info": {
+            "name": "deleteWorkspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "deleteWorkspace"
+        },
+        {
+          "info": {
+            "name": "getWorkspaceStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/status",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "getWorkspaceStatus"
+        },
+        {
+          "info": {
+            "name": "createWorkspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "createWorkspace"
+        },
+        {
+          "info": {
+            "name": "listWorkspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/team/:teamId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "listWorkspaces"
+        },
+        {
+          "info": {
+            "name": "deployLandscape",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/landscape/deploy/:profile",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "deployLandscape"
+        },
+        {
+          "info": {
+            "name": "deployLandscape",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/landscape/deploy",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "deployLandscape"
+        },
+        {
+          "info": {
+            "name": "teardownLandscape",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/landscape/teardown",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "teardownLandscape"
+        },
+        {
+          "info": {
+            "name": "scaleLandscapeServices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/landscape/scale",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "scaleLandscapeServices"
+        },
+        {
+          "info": {
+            "name": "startPipelineStage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/pipeline/:stage/start/:profile",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stage",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "startPipelineStage"
+        },
+        {
+          "info": {
+            "name": "startPipelineStage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/pipeline/:stage/start",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stage",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "startPipelineStage"
+        },
+        {
+          "info": {
+            "name": "stopPipelineStage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/pipeline/:stage/stop",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stage",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "stopPipelineStage"
+        },
+        {
+          "info": {
+            "name": "pipelineStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/pipeline/:stage",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stage",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "pipelineStatus"
+        },
+        {
+          "info": {
+            "name": "listEnvVars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/env-vars",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "listEnvVars"
+        },
+        {
+          "info": {
+            "name": "setEnvVar",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/env-vars",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "setEnvVar"
+        },
+        {
+          "info": {
+            "name": "deleteEnvVar",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/env-vars",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "deleteEnvVar"
+        },
+        {
+          "info": {
+            "name": "executeCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/execute",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Executes the command with \"bash -c command\". Timeouts after 5000ms."
+        },
+        {
+          "info": {
+            "name": "gitHead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/git/head",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "gitHead"
+        },
+        {
+          "info": {
+            "name": "gitPull",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/git/pull/:remote/:branch",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "remote",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "gitPull"
+        },
+        {
+          "info": {
+            "name": "gitPull",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/git/pull/:remote",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "remote",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "gitPull"
+        },
+        {
+          "info": {
+            "name": "gitPull",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/git/pull",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "gitPull"
+        },
+        {
+          "info": {
+            "name": "logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/logs/:stage/:step",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "stage",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "step",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a stream of logs for a given \"stage\" and \"step\". For \"run\" stage logs of Multi Server Deployments use [serverLogs](#/workspaces/workspaces-serverLogs) or [replicaLogs](#/workspaces/workspaces-replicaLogs)."
+        },
+        {
+          "info": {
+            "name": "serverLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/logs/run/:step/server/:server",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "step",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "server",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "serverLogs"
+        },
+        {
+          "info": {
+            "name": "replicaLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/workspaces/:workspaceId/logs/run/:step/replica/:replica",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "step",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "replica",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "replicaLogs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

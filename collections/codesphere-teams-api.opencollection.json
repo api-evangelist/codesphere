@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codesphere Public clusters teams API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "getTeam"
+        },
+        {
+          "info": {
+            "name": "deleteTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "deleteTeam"
+        },
+        {
+          "info": {
+            "name": "listTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/teams",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "listTeams"
+        },
+        {
+          "info": {
+            "name": "createTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/teams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "createTeam"
+        },
+        {
+          "info": {
+            "name": "migrateTeamToOrg",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId/migrate",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "migrateTeamToOrg"
+        },
+        {
+          "info": {
+            "name": "listMembers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId/members",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all members associated with a team"
+        },
+        {
+          "info": {
+            "name": "inviteMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId/members",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Invite a user to a team by email"
+        },
+        {
+          "info": {
+            "name": "changeRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId/members/:userId/role",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Change the role of a team member"
+        },
+        {
+          "info": {
+            "name": "removeMember",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/teams/:teamId/members/:userId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove a member from a team"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

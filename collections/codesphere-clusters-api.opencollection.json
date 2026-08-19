@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codesphere Public clusters API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listAllOrganizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/clusters/organizations",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "listAllOrganizations"
+        },
+        {
+          "info": {
+            "name": "createOrganization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/clusters/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "createOrganization"
+        },
+        {
+          "info": {
+            "name": "addClusterAdmin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/clusters/admins",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "addClusterAdmin"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

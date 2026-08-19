@@ -1,0 +1,2626 @@
+{
+  "item": [
+    {
+      "id": "a4744c52-271f-41fe-ad9f-b35bb3745cf4",
+      "name": "managed-services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e506472-eb48-4586-8dc5-0f4aeedac156",
+          "name": "listProviders",
+          "request": {
+            "name": "listProviders",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "teamId",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14d04a6d-d956-403a-a477-a1126523ce84",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "teamId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"dt_ybo23q8c\",\n    \"version\": \"v4j\",\n    \"schemaVersion\": \"v78oub\",\n    \"author\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"iconUrl\": \"string\",\n    \"configSchema\": {},\n    \"detailsSchema\": {},\n    \"secretsSchema\": {},\n    \"plans\": [\n      {\n        \"id\": 8023,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {\n          \"key_0\": {\n            \"schema\": {},\n            \"pricedAs\": \"cpu-tenths\"\n          },\n          \"key_1\": {\n            \"schema\": {},\n            \"pricedAs\": \"cpu-tenths\"\n          },\n          \"key_2\": {\n            \"schema\": {},\n            \"pricedAs\": \"free\"\n          }\n        }\n      },\n      {\n        \"id\": 6502,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {\n          \"key_0\": {\n            \"schema\": {},\n            \"pricedAs\": \"ram-mib\"\n          },\n          \"key_1\": {\n            \"schema\": {},\n            \"pricedAs\": \"replicas\"\n          },\n          \"key_2\": {\n            \"schema\": {},\n            \"pricedAs\": \"free\"\n          }\n        }\n      }\n    ],\n    \"backend\": {\n      \"landscape\": {\n        \"gitUrl\": \"string\",\n        \"ciProfile\": \"string\"\n      }\n    },\n    \"scope\": \"team\",\n    \"backups\": {\n      \"configSchema\": {},\n      \"secretsSchema\": {}\n    },\n    \"capabilities\": {\n      \"pause\": true,\n      \"backups\": true,\n      \"pointInTimeRecovery\": false\n    },\n    \"versions\": {\n      \"0.0.1\": {\n        \"ciProfile\": \"debug\",\n        \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n        \"description\": \"Initial release\"\n      },\n      \"1.0.0-rc\": {\n        \"appVersion\": \"Nextcloud v33\",\n        \"ciProfile\": \"prod\",\n        \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n        \"description\": \"Release Candidate. Added feature X, Y and Z\"\n      },\n      \"1.0.0\": {\n        \"appVersion\": \"Nextcloud v33\",\n        \"ciProfile\": \"prod\",\n        \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n        \"description\": \"Long Term Support Release\"\n      }\n    },\n    \"createdAt\": \"1972-03-17T21:05:21.633Z\"\n  },\n  {\n    \"name\": \"r\",\n    \"version\": \"v8rsvwcur\",\n    \"schemaVersion\": \"v1905\",\n    \"author\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"iconUrl\": \"string\",\n    \"configSchema\": {},\n    \"detailsSchema\": {},\n    \"secretsSchema\": {},\n    \"plans\": [\n      {\n        \"id\": 2066,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {\n          \"key_0\": {\n            \"schema\": {},\n            \"pricedAs\": \"storage-mib\"\n          },\n          \"key_1\": {\n            \"schema\": {},\n            \"pricedAs\": \"ram-mib\"\n          },\n          \"key_2\": {\n            \"schema\": {},\n            \"pricedAs\": \"storage-mib\"\n          }\n        }\n      },\n      {\n        \"id\": 4209,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"parameters\": {\n          \"key_0\": {\n            \"schema\": {},\n            \"pricedAs\": \"ram-mib\"\n          }\n        }\n      }\n    ],\n    \"backend\": {\n      \"landscape\": {\n        \"gitUrl\": \"string\",\n        \"ciProfile\": \"string\"\n      }\n    },\n    \"scope\": \"team\",\n    \"backups\": {\n      \"configSchema\": {},\n      \"secretsSchema\": {}\n    },\n    \"capabilities\": {\n      \"pause\": true,\n      \"backups\": true,\n      \"pointInTimeRecovery\": false\n    },\n    \"versions\": {\n      \"0.0.1\": {\n        \"ciProfile\": \"debug\",\n        \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n        \"description\": \"Initial release\"\n      },\n      \"1.0.0-rc\": {\n        \"appVersion\": \"Nextcloud v33\",\n        \"ciProfile\": \"prod\",\n        \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n        \"description\": \"Release Candidate. Added feature X, Y and Z\"\n      },\n      \"1.0.0\": {\n        \"appVersion\": \"Nextcloud v33\",\n        \"ciProfile\": \"prod\",\n        \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n        \"description\": \"Long Term Support Release\"\n      }\n    },\n    \"createdAt\": \"2003-11-09T18:30:12.958Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88081b1b-5d36-4605-a2a0-670c3fa1ed8e",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "teamId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "faa02fbc-d3fe-46bf-ac72-448cabe53c66",
+          "name": "createProvider",
+          "request": {
+            "name": "createProvider",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"key_0\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_1\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_2\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_3\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85e3c6fa-5af9-4e8b-b436-e4c5bfdbd61f",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"k0878ecl\",\n  \"version\": \"v49y0ty4\",\n  \"schemaVersion\": \"v5xvlyc\",\n  \"author\": \"string\",\n  \"category\": \"string\",\n  \"description\": \"string\",\n  \"displayName\": \"string\",\n  \"iconUrl\": \"string\",\n  \"configSchema\": {},\n  \"detailsSchema\": {},\n  \"secretsSchema\": {},\n  \"plans\": [\n    {\n      \"id\": 9160,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"ram-mib\"\n        }\n      }\n    },\n    {\n      \"id\": 5802,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"free\"\n        }\n      }\n    }\n  ],\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"string\",\n      \"ciProfile\": \"string\"\n    }\n  },\n  \"scope\": \"team\",\n  \"backups\": {\n    \"configSchema\": {},\n    \"secretsSchema\": {}\n  },\n  \"capabilities\": {\n    \"pause\": false,\n    \"backups\": false,\n    \"pointInTimeRecovery\": true\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"createdAt\": \"1952-09-09T20:39:01.881Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cdf55a2-9921-4fc1-aee1-c405e911fa9c",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52714ed5-83a6-413e-a42b-22280c9180f4",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f708ef62-dff4-4944-ba34-d7de4ff51df3",
+          "name": "upsertProvider",
+          "request": {
+            "name": "upsertProvider",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"key_0\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_1\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_2\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"key_3\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1edcc5d-05fc-414e-91f5-62a2c962f2db",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"k0878ecl\",\n  \"version\": \"v49y0ty4\",\n  \"schemaVersion\": \"v5xvlyc\",\n  \"author\": \"string\",\n  \"category\": \"string\",\n  \"description\": \"string\",\n  \"displayName\": \"string\",\n  \"iconUrl\": \"string\",\n  \"configSchema\": {},\n  \"detailsSchema\": {},\n  \"secretsSchema\": {},\n  \"plans\": [\n    {\n      \"id\": 9160,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"ram-mib\"\n        }\n      }\n    },\n    {\n      \"id\": 5802,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"free\"\n        }\n      }\n    }\n  ],\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"string\",\n      \"ciProfile\": \"string\"\n    }\n  },\n  \"scope\": \"team\",\n  \"backups\": {\n    \"configSchema\": {},\n    \"secretsSchema\": {}\n  },\n  \"capabilities\": {\n    \"pause\": false,\n    \"backups\": false,\n    \"pointInTimeRecovery\": true\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"createdAt\": \"1952-09-09T20:39:01.881Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5659489e-de01-43fc-aa56-954e6c180167",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "859ac74e-05fd-4494-b876-7b6a2298828c",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"name\": \"<string>\",\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"version\": \"<string>\",\n  \"schemaVersion\": \"<string>\",\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6066421-a4ea-4607-b4b0-9eb465d62dde",
+          "name": "deleteProvider",
+          "request": {
+            "name": "deleteProvider",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                "providers",
+                ":name",
+                ":schemaVersion"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaVersion",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47c32272-ef06-46bb-8bb4-1ffb505372bf",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ff93ed1-a376-46ef-bf98-9b28769687a8",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "002b3d05-42f8-4ea4-b677-faace9621cf4",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "451991d9-b5c9-49e0-8541-743432baa118",
+              "name": "Managed service not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccf49c7a-4758-403c-bf81-80163e731e34",
+          "name": "updateProvider",
+          "request": {
+            "name": "updateProvider",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                "providers",
+                ":name",
+                ":schemaVersion"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaVersion",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"<string>\",\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_2\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        },\n        \"key_1\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"versions\": {\n    \"key_0\": {\n      \"gitRef\": \"<string>\",\n      \"ciProfile\": \"<string>\",\n      \"appVersion\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  },\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4693ed33-94f1-47fb-8299-d4a144314b44",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"k0878ecl\",\n  \"version\": \"v49y0ty4\",\n  \"schemaVersion\": \"v5xvlyc\",\n  \"author\": \"string\",\n  \"category\": \"string\",\n  \"description\": \"string\",\n  \"displayName\": \"string\",\n  \"iconUrl\": \"string\",\n  \"configSchema\": {},\n  \"detailsSchema\": {},\n  \"secretsSchema\": {},\n  \"plans\": [\n    {\n      \"id\": 9160,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"ram-mib\"\n        }\n      }\n    },\n    {\n      \"id\": 5802,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": {},\n          \"pricedAs\": \"free\"\n        }\n      }\n    }\n  ],\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"string\",\n      \"ciProfile\": \"string\"\n    }\n  },\n  \"scope\": \"team\",\n  \"backups\": {\n    \"configSchema\": {},\n    \"secretsSchema\": {}\n  },\n  \"capabilities\": {\n    \"pause\": false,\n    \"backups\": false,\n    \"pointInTimeRecovery\": true\n  },\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"createdAt\": \"1952-09-09T20:39:01.881Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f571dd8-a89f-4040-8b22-d855f86b4085",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52064363-3397-48c4-a7d2-cc32cf117917",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a80e0c49-37d0-465d-b65f-883d71099793",
+              "name": "Managed service not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    "providers",
+                    ":name",
+                    ":schemaVersion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"author\": \"<string>\",\n  \"backups\": {\n    \"configSchema\": \"<object>\",\n    \"secretsSchema\": \"<object>\"\n  },\n  \"capabilities\": {\n    \"pause\": \"<boolean>\",\n    \"backups\": \"<boolean>\",\n    \"pointInTimeRecovery\": \"<boolean>\"\n  },\n  \"category\": \"<string>\",\n  \"description\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"configSchema\": \"<object>\",\n  \"detailsSchema\": \"<object>\",\n  \"secretsSchema\": \"<object>\",\n  \"plans\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {\n          \"schema\": \"<object>\",\n          \"pricedAs\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"versions\": {\n    \"0.0.1\": {\n      \"ciProfile\": \"debug\",\n      \"gitRef\": \"1a410efbd13591db07496601ebc7a059dd55cfe9\",\n      \"description\": \"Initial release\"\n    },\n    \"1.0.0-rc\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"cac0cab538b970a37ea1e769cbbde608743bc96d\",\n      \"description\": \"Release Candidate. Added feature X, Y and Z\"\n    },\n    \"1.0.0\": {\n      \"appVersion\": \"Nextcloud v33\",\n      \"ciProfile\": \"prod\",\n      \"gitRef\": \"fdf4fc3344e67ab068f836878b6c4951e3b15f3d\",\n      \"description\": \"Long Term Support Release\"\n    }\n  },\n  \"backend\": {\n    \"landscape\": {\n      \"gitUrl\": \"<string>\",\n      \"ciProfile\": \"<string>\"\n    }\n  },\n  \"scope\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fca6383-dadc-42b4-ae71-d4bf1e550d8d",
+          "name": "create",
+          "request": {
+            "name": "create",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"provider\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"schemaVersion\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"teamId\": \"<integer>\",\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {}\n    }\n  },\n  \"recoverFrom\": {\n    \"id\": \"<uuid>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {}\n    }\n  },\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9627e16d-3ea0-4b2b-9f00-a5646aba5e5a",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"provider\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"schemaVersion\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"secrets\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"teamId\": \"<integer>\",\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"recoverFrom\": {\n    \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n    \"config\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n  \"provider\": {\n    \"name\": \"v30gd87\",\n    \"version\": \"v8raxfnoiir2\",\n    \"schemaVersion\": \"v6\"\n  },\n  \"name\": \"\\rV0xh᠎pprT0m3zSAd UjZiN 2\",\n  \"backups\": {\n    \"enabled\": true,\n    \"deleteRetentionDays\": 55,\n    \"intervalH\": 325,\n    \"entries\": [\n      {\n        \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n        \"scheduledAt\": \"2012-03-08T14:26:50.421Z\",\n        \"initiatedAt\": \"1986-05-17T21:12:34.400Z\",\n        \"confirmedAt\": \"1972-03-20T15:58:24.403Z\"\n      },\n      {\n        \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n        \"scheduledAt\": \"1990-05-18T11:57:49.524Z\",\n        \"initiatedAt\": \"2007-01-02T01:36:46.062Z\",\n        \"confirmedAt\": \"1997-10-24T17:48:56.870Z\"\n      }\n    ],\n    \"config\": {\n      \"key_0\": {}\n    }\n  },\n  \"pause\": false,\n  \"plan\": {\n    \"id\": 848,\n    \"parameters\": {\n      \"key_0\": 9072,\n      \"key_1\": 8102,\n      \"key_2\": 9879\n    }\n  },\n  \"createdAt\": \"1982-02-04T13:30:54.580Z\",\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"status\": {\n    \"state\": \"creating\"\n  },\n  \"recentEvents\": [\n    {\n      \"eventName\": \"string\",\n      \"timestamp\": \"1994-10-16T05:50:54.737Z\",\n      \"observedTimestamp\": \"2006-03-30T06:00:06.378Z\",\n      \"severityNumber\": 3627,\n      \"body\": \"string\",\n      \"resource\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"eventName\": \"string\",\n      \"timestamp\": \"2009-11-09T16:15:33.617Z\",\n      \"observedTimestamp\": \"1993-04-05T23:42:56.164Z\",\n      \"severityNumber\": 1289,\n      \"body\": \"string\",\n      \"resource\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"version\": \"1.0.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76c47004-61c5-4fe1-837c-c7c9c4bf269d",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"provider\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"schemaVersion\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"secrets\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"teamId\": \"<integer>\",\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"recoverFrom\": {\n    \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n    \"config\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d64d77d8-da35-4e5b-a5da-14edb6ff0485",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"provider\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"schemaVersion\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"secrets\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"teamId\": \"<integer>\",\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"recoverFrom\": {\n    \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n    \"config\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53e1c05b-35c7-4ca0-8554-e0a6bfbf0648",
+          "name": "list",
+          "request": {
+            "name": "list",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "team",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "includeDeleted",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "815ab01a-fcc5-4966-928e-90ace78d5571",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includeDeleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n    \"provider\": {\n      \"name\": \"e22a4qqhxc\",\n      \"version\": \"v5q0fkr\",\n      \"schemaVersion\": \"v36p68\"\n    },\n    \"name\": \"wz u\\rx5-z \\nFb4DS z  J4 o7EKo  d U　_ ZK 9O0  1᠎BH gjV_z 2\\n  Ivl \\f\\tT_kc1-\\u000bxYA1P M　iB4 ᠎uZkzk lKnt SID 8\\rK-\",\n    \"backups\": {\n      \"enabled\": true,\n      \"deleteRetentionDays\": 254,\n      \"intervalH\": 404,\n      \"entries\": [\n        {\n          \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n          \"scheduledAt\": \"1984-10-20T00:57:08.382Z\",\n          \"initiatedAt\": \"1959-04-01T18:49:01.323Z\",\n          \"confirmedAt\": \"1964-04-17T01:45:52.047Z\"\n        },\n        {\n          \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n          \"scheduledAt\": \"1958-02-02T06:04:39.437Z\",\n          \"initiatedAt\": \"1953-04-17T04:16:40.624Z\",\n          \"confirmedAt\": \"2007-02-19T16:17:22.250Z\"\n        }\n      ],\n      \"config\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {},\n        \"key_4\": {}\n      }\n    },\n    \"pause\": false,\n    \"plan\": {\n      \"id\": 8937,\n      \"parameters\": {\n        \"key_0\": 7597\n      }\n    },\n    \"createdAt\": \"2013-05-13T05:30:37.171Z\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"status\": {\n      \"state\": \"creating\"\n    },\n    \"recentEvents\": [\n      {\n        \"eventName\": \"string\",\n        \"timestamp\": \"1952-06-21T08:56:28.606Z\",\n        \"observedTimestamp\": \"1964-10-04T02:08:53.069Z\",\n        \"severityNumber\": 4853,\n        \"body\": \"string\",\n        \"resource\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      {\n        \"eventName\": \"string\",\n        \"timestamp\": \"2001-05-15T17:43:40.286Z\",\n        \"observedTimestamp\": \"1980-08-31T04:35:16.186Z\",\n        \"severityNumber\": 4805,\n        \"body\": \"string\",\n        \"resource\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"version\": \"1.0.0\"\n  },\n  {\n    \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n    \"provider\": {\n      \"name\": \"iph9e53xfda\",\n      \"version\": \"v18zmgmzm\",\n      \"schemaVersion\": \"v53r8gy090\"\n    },\n    \"name\": \"j\",\n    \"backups\": {\n      \"enabled\": true,\n      \"deleteRetentionDays\": 108,\n      \"intervalH\": 47,\n      \"entries\": [\n        {\n          \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n          \"scheduledAt\": \"2015-08-23T04:31:19.735Z\",\n          \"initiatedAt\": \"1947-01-16T17:40:08.240Z\",\n          \"confirmedAt\": \"2008-07-17T01:11:37.140Z\"\n        },\n        {\n          \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n          \"scheduledAt\": \"1949-10-25T07:48:27.641Z\",\n          \"initiatedAt\": \"1986-07-15T21:05:19.964Z\",\n          \"confirmedAt\": \"1970-06-21T10:19:08.620Z\"\n        }\n      ],\n      \"config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"pause\": true,\n    \"plan\": {\n      \"id\": 185,\n      \"parameters\": {\n        \"key_0\": 5410\n      }\n    },\n    \"createdAt\": \"2006-08-01T22:04:27.108Z\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"status\": {\n      \"state\": \"creating\"\n    },\n    \"recentEvents\": [\n      {\n        \"eventName\": \"string\",\n        \"timestamp\": \"2025-08-09T13:44:54.966Z\",\n        \"observedTimestamp\": \"1963-02-04T00:04:51.389Z\",\n        \"severityNumber\": 8528,\n        \"body\": \"string\",\n        \"resource\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"eventName\": \"string\",\n        \"timestamp\": \"1973-03-27T12:17:17.422Z\",\n        \"observedTimestamp\": \"1980-12-23T00:39:45.129Z\",\n        \"severityNumber\": 8490,\n        \"body\": \"string\",\n        \"resource\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ],\n    \"version\": \"1.0.0\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5268cfe3-532a-42f1-8eb6-7a5ca67a2436",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includeDeleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a1be398-af43-488f-822c-6ea2e470c656",
+          "name": "delete",
+          "request": {
+            "name": "delete",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ff1965b-9848-4325-bfc3-f765b339881c",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49f46fa0-00c9-4fcf-927f-71ebfd86dfd2",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58ab3aa2-068f-4e76-b6a7-aa5a3a033650",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "666b1588-d9e5-459b-a0d5-0d21ed90478f",
+              "name": "Managed service not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3637f99f-1f6b-46de-ab96-9cdcbea2bc02",
+          "name": "getDetails",
+          "request": {
+            "name": "getDetails",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ed56b79-352b-4e30-b4d5-1b3d1f174514",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9387f721-cd2a-4ba7-920c-e6b0ebaa452d",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "182d0460-9ec3-4392-b1f3-d40c4a4e8f03",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "118c80ed-5cde-4ffe-94c0-6e27174fc047",
+              "name": "Managed service not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "645edeb6-3eec-4993-985d-058f75e2e557",
+          "name": "update",
+          "request": {
+            "name": "update",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {}\n    }\n  },\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"name\": \"<string>\",\n  \"pause\": \"<boolean>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\",\n      \"key_1\": \"<integer>\",\n      \"key_2\": \"<integer>\"\n    }\n  },\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73c6617f-433a-4968-ac8f-b676ec00bd09",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  },\n  \"config\": {\n    \"key_0\": {}\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"name\": \"<string>\",\n  \"pause\": \"<boolean>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n  \"provider\": {\n    \"name\": \"v30gd87\",\n    \"version\": \"v8raxfnoiir2\",\n    \"schemaVersion\": \"v6\"\n  },\n  \"name\": \"\\rV0xh᠎pprT0m3zSAd UjZiN 2\",\n  \"backups\": {\n    \"enabled\": true,\n    \"deleteRetentionDays\": 55,\n    \"intervalH\": 325,\n    \"entries\": [\n      {\n        \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n        \"scheduledAt\": \"2012-03-08T14:26:50.421Z\",\n        \"initiatedAt\": \"1986-05-17T21:12:34.400Z\",\n        \"confirmedAt\": \"1972-03-20T15:58:24.403Z\"\n      },\n      {\n        \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n        \"scheduledAt\": \"1990-05-18T11:57:49.524Z\",\n        \"initiatedAt\": \"2007-01-02T01:36:46.062Z\",\n        \"confirmedAt\": \"1997-10-24T17:48:56.870Z\"\n      }\n    ],\n    \"config\": {\n      \"key_0\": {}\n    }\n  },\n  \"pause\": false,\n  \"plan\": {\n    \"id\": 848,\n    \"parameters\": {\n      \"key_0\": 9072,\n      \"key_1\": 8102,\n      \"key_2\": 9879\n    }\n  },\n  \"createdAt\": \"1982-02-04T13:30:54.580Z\",\n  \"config\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"status\": {\n    \"state\": \"creating\"\n  },\n  \"recentEvents\": [\n    {\n      \"eventName\": \"string\",\n      \"timestamp\": \"1994-10-16T05:50:54.737Z\",\n      \"observedTimestamp\": \"2006-03-30T06:00:06.378Z\",\n      \"severityNumber\": 3627,\n      \"body\": \"string\",\n      \"resource\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"eventName\": \"string\",\n      \"timestamp\": \"2009-11-09T16:15:33.617Z\",\n      \"observedTimestamp\": \"1993-04-05T23:42:56.164Z\",\n      \"severityNumber\": 1289,\n      \"body\": \"string\",\n      \"resource\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"version\": \"1.0.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9eb9acf-5329-49f9-8d4d-12b09dad12ee",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  },\n  \"config\": {\n    \"key_0\": {}\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"name\": \"<string>\",\n  \"pause\": \"<boolean>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1da5daf9-32ad-4596-b03d-a9ba8eb1add1",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  },\n  \"config\": {\n    \"key_0\": {}\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"name\": \"<string>\",\n  \"pause\": \"<boolean>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a478eaa-bac3-48f5-b050-85a349dc7181",
+              "name": "Managed service not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backups\": {\n    \"enabled\": \"<boolean>\",\n    \"deleteRetentionDays\": \"<integer>\",\n    \"intervalH\": \"<integer>\",\n    \"config\": {\n      \"key_0\": {}\n    },\n    \"secrets\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  },\n  \"config\": {\n    \"key_0\": {}\n  },\n  \"secrets\": {\n    \"key_0\": {}\n  },\n  \"name\": \"<string>\",\n  \"pause\": \"<boolean>\",\n  \"plan\": {\n    \"id\": \"<integer>\",\n    \"parameters\": {\n      \"key_0\": \"<integer>\"\n    }\n  },\n  \"version\": \"1.0.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a9afdce-5e9e-47cd-9c56-4be704b74a27",
+          "name": "scheduleBackup",
+          "request": {
+            "name": "scheduleBackup",
+            "description": {},
+            "url": {
+              "path": [
+                "managed-services",
+                ":id",
+                "backups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07409b45-2360-4b64-972f-4fd1584fe806",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id",
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8316ee2f-87f8-424e-b925-7382dc50d662\",\n  \"scheduledAt\": \"1994-09-26T04:45:11.832Z\",\n  \"initiatedAt\": \"2010-10-10T13:30:07.044Z\",\n  \"confirmedAt\": \"1997-01-25T15:28:07.889Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57696246-394e-40c8-857e-65d1e937cd48",
+              "name": "Path or request body variable does not match schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id",
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dd8fa46-7107-433d-88da-361c6e30f87e",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed-services",
+                    ":id",
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"title\": \"string\",\n  \"traceId\": \"string\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.codesphere.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1c917618-120a-4040-8953-c3a1dc60e461",
+    "name": "Codesphere Public clusters managed-services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

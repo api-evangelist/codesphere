@@ -2,10 +2,8 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/codesphere-openapi-original.json
-notes: >-
-  No official hosted Codesphere MCP server was found (checked the
-  codesphere-cloud GitHub org and MCP registries). This is a candidate tool
-  list derived one-to-one from the Codesphere Public API operations.
+notes: No official hosted Codesphere MCP server was found (checked the codesphere-cloud GitHub org and
+  MCP registries). This is a candidate tool list derived one-to-one from the Codesphere Public API operations.
 server:
   name: codesphere
   transport: http
@@ -251,3 +249,9 @@ tools:
 - name: usage_getLandscapeServiceEvents
   description: getLandscapeServiceEvents
   source_operation: openapi/codesphere-openapi-original.json#usage-getLandscapeServiceEvents
+deployment:
+  mode: none
+  verified: derived
+  tools: 80
+  checked: '2026-08-12'
+  source: catalog MCP census

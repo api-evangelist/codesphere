@@ -1,0 +1,333 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codesphere Public clusters vault API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vault",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listSharedVaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all shared vault names for a team"
+        },
+        {
+          "info": {
+            "name": "createSharedVault",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an empty shared vault for a team"
+        },
+        {
+          "info": {
+            "name": "deleteSharedVault",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared/:vaultName",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vaultName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a shared vault and all its secrets for a team"
+        },
+        {
+          "info": {
+            "name": "storeSharedSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared/:vaultName/secrets",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vaultName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Store secrets in a named shared vault"
+        },
+        {
+          "info": {
+            "name": "deleteSharedSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared/:vaultName/secrets",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vaultName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete one or more named secrets from a shared vault. Deleting all keys does not remove the vault itself."
+        },
+        {
+          "info": {
+            "name": "generateSharedSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared/:vaultName/generate",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vaultName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate and store secrets in a named shared vault using OpenBao password policies. If the vault does not exist it is created implicitly."
+        },
+        {
+          "info": {
+            "name": "listSharedSecretKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/shared/:vaultName/keys",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vaultName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List secret key names stored in a named shared vault. Values are never returned."
+        },
+        {
+          "info": {
+            "name": "storeWorkspaceSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/workspaces/:workspaceId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Store secrets in the vault for a given workspace"
+        },
+        {
+          "info": {
+            "name": "deleteWorkspaceSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/workspaces/:workspaceId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete secrets in the vault for a given workspace"
+        },
+        {
+          "info": {
+            "name": "listWorkspaceSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/workspaces/:workspaceId/keys",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List secrets in the vault for a given workspace"
+        },
+        {
+          "info": {
+            "name": "generateSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.codesphere.com/api/vault/teams/:teamId/workspaces/:workspaceId/generate",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate secrets in the vault for a given workspace based on the provided password policies"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
