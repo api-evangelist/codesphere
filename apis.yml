@@ -37,6 +37,17 @@ created: '2026-07-17'
 modified: '2026-07-18'
 tags:
 - Company
+- Software-as-a-Service
+- Cloud
+- Deployment
+- Developer Tools
+- Platform-as-a-Service
+- Infrastructure
+- Sovereign Cloud
+- CI/CD
+- Managed Service
+tags_raw:
+- Company
 - Saas
 - Cloud
 - Deployment
@@ -53,6 +64,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Cluster
+  tags_raw:
   - clusters
   properties:
   - type: OpenAPI
@@ -65,6 +78,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Domains
+  tags_raw:
   - domains
   properties:
   - type: OpenAPI
@@ -77,6 +92,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Managed Service
+  tags_raw:
   - managed-services
   properties:
   - type: OpenAPI
@@ -89,6 +106,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Metadata
+  tags_raw:
   - metadata
   properties:
   - type: OpenAPI
@@ -101,6 +120,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Organization
+  tags_raw:
   - organizations
   properties:
   - type: OpenAPI
@@ -113,6 +134,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - SSH
+  tags_raw:
   - ssh
   properties:
   - type: OpenAPI
@@ -125,6 +148,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Team
+  tags_raw:
   - teams
   properties:
   - type: OpenAPI
@@ -137,6 +162,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Usage
+  tags_raw:
   - usage
   properties:
   - type: OpenAPI
@@ -149,6 +176,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Vault
+  tags_raw:
   - vault
   properties:
   - type: OpenAPI
@@ -161,6 +190,8 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
+  - Workspaces
+  tags_raw:
   - workspaces
   properties:
   - type: OpenAPI
