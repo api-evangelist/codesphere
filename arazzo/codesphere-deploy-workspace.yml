@@ -4,8 +4,8 @@ info:
   version: 1.0.0
   summary: Create a workspace, run the prepare and run pipeline stages, and confirm it is live.
 sourceDescriptions:
-- name: codesphere
-  url: ../openapi/codesphere-openapi-original.json
+- name: workspacesApi
+  url: ../openapi/codesphere-workspaces-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: deploy-workspace
@@ -13,8 +13,8 @@ workflows:
   inputs:
     type: object
     properties:
-      teamId: { type: integer }
-      workspaceId: { type: integer }
+      teamId: {type: integer}
+      workspaceId: {type: integer}
   steps:
   - stepId: createWorkspace
     operationId: workspaces-createWorkspace

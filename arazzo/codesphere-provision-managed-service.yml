@@ -4,8 +4,8 @@ info:
   version: 1.0.0
   summary: Discover providers, create a managed service, and confirm it is running.
 sourceDescriptions:
-- name: codesphere
-  url: ../openapi/codesphere-openapi-original.json
+- name: managedServicesApi
+  url: ../openapi/codesphere-managed-services-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-managed-service
@@ -13,9 +13,9 @@ workflows:
   inputs:
     type: object
     properties:
-      teamId: { type: integer }
-      provider: { type: string }
-      plan: { type: string }
+      teamId: {type: integer}
+      provider: {type: string}
+      plan: {type: string}
   steps:
   - stepId: listProviders
     operationId: managed-services-listProviders
