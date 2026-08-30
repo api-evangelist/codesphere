@@ -49,7 +49,7 @@ created: '2026-07-17'
 modified: '2026-07-18'
 tags:
 - Company
-- Software-as-a-Service
+- Saas
 - Cloud
 - Deployment
 - Developer Tools
@@ -76,7 +76,7 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
-  - Cluster
+  - clusters
   tags_raw:
   - clusters
   properties:
@@ -104,7 +104,7 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
-  - Managed Service
+  - managed-services
   tags_raw:
   - managed-services
   properties:
@@ -188,7 +188,7 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
-  - Vault
+  - vault
   tags_raw:
   - vault
   properties:
