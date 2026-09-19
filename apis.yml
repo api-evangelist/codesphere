@@ -203,7 +203,7 @@ apis:
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
   tags:
-  - Workspaces
+  - Workspace
   tags_raw:
   - workspaces
   properties:
