@@ -1,17 +1,17 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Codesphere Public clusters API
+  title: Codesphere Public Clusters API
   version: 0.1.0
 servers:
 - url: https://cloud.codesphere.com/api
 tags:
-- name: clusters
+- name: Clusters
 paths:
   /clusters/organizations:
     get:
       summary: listAllOrganizations
       tags:
-      - clusters
+      - Clusters
       parameters: []
       responses:
         '200':
@@ -64,7 +64,7 @@ paths:
     post:
       summary: createOrganization
       tags:
-      - clusters
+      - Clusters
       parameters: []
       requestBody:
         content:
@@ -153,7 +153,7 @@ paths:
     post:
       summary: addClusterAdmin
       tags:
-      - clusters
+      - Clusters
       parameters: []
       requestBody:
         content:

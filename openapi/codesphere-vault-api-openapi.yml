@@ -1,18 +1,18 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Codesphere Public clusters vault API
+  title: Codesphere Public Vault API
   version: 0.1.0
 servers:
 - url: https://cloud.codesphere.com/api
 tags:
-- name: vault
+- name: Vault
 paths:
   /vault/teams/{teamId}/shared:
     get:
       summary: listSharedVaults
       description: List all shared vault names for a team
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -82,7 +82,7 @@ paths:
       summary: createSharedVault
       description: Create an empty shared vault for a team
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -155,7 +155,7 @@ paths:
       summary: deleteSharedVault
       description: Delete a shared vault and all its secrets for a team
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -223,7 +223,7 @@ paths:
       summary: storeSharedSecrets
       description: Store secrets in a named shared vault
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -307,7 +307,7 @@ paths:
       summary: deleteSharedSecrets
       description: Delete one or more named secrets from a shared vault. Deleting all keys does not remove the vault itself.
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -386,7 +386,7 @@ paths:
       summary: generateSharedSecrets
       description: Generate and store secrets in a named shared vault using OpenBao password policies. If the vault does not exist it is created implicitly.
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -483,7 +483,7 @@ paths:
       summary: listSharedSecretKeys
       description: List secret key names stored in a named shared vault. Values are never returned.
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -561,7 +561,7 @@ paths:
       summary: storeWorkspaceSecrets
       description: Store secrets in the vault for a given workspace
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -644,7 +644,7 @@ paths:
       summary: deleteWorkspaceSecrets
       description: Delete secrets in the vault for a given workspace
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -722,7 +722,7 @@ paths:
       summary: listWorkspaceSecrets
       description: List secrets in the vault for a given workspace
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path
@@ -799,7 +799,7 @@ paths:
       summary: generateSecrets
       description: Generate secrets in the vault for a given workspace based on the provided password policies
       tags:
-      - vault
+      - Vault
       parameters:
       - name: teamId
         in: path

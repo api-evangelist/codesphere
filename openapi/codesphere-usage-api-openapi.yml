@@ -1,18 +1,18 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Codesphere Public clusters usage API
+  title: Codesphere Public Usage API
   version: 0.1.0
 servers:
 - url: https://cloud.codesphere.com/api
 tags:
-- name: usage
+- name: Usage
 paths:
   /usage/teams/{teamId}/resources/landscape-service/summary:
     get:
       summary: getUsageSummaryLandscape
       description: Get the usage summary of all Landscape Services for a team over the specified time period.
       tags:
-      - usage
+      - Usage
       parameters:
       - name: teamId
         in: path
@@ -160,7 +160,7 @@ paths:
       summary: getLandscapeServiceEvents
       description: Returns Audit-Events for a specific Landscape Service.
       tags:
-      - usage
+      - Usage
       parameters:
       - name: teamId
         in: path
