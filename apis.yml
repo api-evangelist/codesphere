@@ -48,6 +48,9 @@ x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
 tags:
 - Company
 - Software-as-a-Service
@@ -72,7 +75,7 @@ tags_raw:
 - Managed Services
 apis:
 - aid: codesphere:codesphere-clusters-api
-  name: Codesphere clusters API
+  name: Codesphere Clusters API
   description: The clusters API from Codesphere — 2 operation(s) for clusters.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -86,7 +89,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-domains-api
-  name: Codesphere domains API
+  name: Codesphere Domains API
   description: The domains API from Codesphere — 4 operation(s) for domains.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -100,7 +103,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-managed-services-api
-  name: Codesphere managed-services API
+  name: Codesphere Managed Services API
   description: The managed-services API from Codesphere — 5 operation(s) for managed-services.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -114,7 +117,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-metadata-api
-  name: Codesphere metadata API
+  name: Codesphere Metadata API
   description: The metadata API from Codesphere — 3 operation(s) for metadata.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -128,7 +131,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-organizations-api
-  name: Codesphere organizations API
+  name: Codesphere Organizations API
   description: The organizations API from Codesphere — 5 operation(s) for organizations.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -142,7 +145,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-ssh-api
-  name: Codesphere ssh API
+  name: Codesphere Ssh API
   description: The ssh API from Codesphere — 1 operation(s) for ssh.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -156,7 +159,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-teams-api
-  name: Codesphere teams API
+  name: Codesphere Teams API
   description: The teams API from Codesphere — 6 operation(s) for teams.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -170,7 +173,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-usage-api
-  name: Codesphere usage API
+  name: Codesphere Usage API
   description: The usage API from Codesphere — 2 operation(s) for usage.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -184,7 +187,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-vault-api
-  name: Codesphere vault API
+  name: Codesphere Vault API
   description: The vault API from Codesphere — 8 operation(s) for vault.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
@@ -198,7 +201,7 @@ apis:
   - type: APIReference
     url: https://cloud.codesphere.com/api/swagger-ui
 - aid: codesphere:codesphere-workspaces-api
-  name: Codesphere workspaces API
+  name: Codesphere Workspaces API
   description: The workspaces API from Codesphere — 21 operation(s) for workspaces.
   humanURL: https://docs.codesphere.com/apis-and-automations/public-api
   baseURL: https://cloud.codesphere.com/api
