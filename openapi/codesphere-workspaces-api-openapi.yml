@@ -2420,35 +2420,6 @@ paths:
       operationId: workspaces-replicaLogs
 components:
   schemas:
-    workspaces.replicaLogs.get.response:
-      description: An SSE event of type data. Data contains a JSON object with given properties.
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              timestamp:
-                type: string
-                format: date-time
-              kind:
-                type: string
-                enum:
-                - E
-                - I
-              data:
-                type: string
-            required:
-            - timestamp
-            - kind
-            - data
-        event:
-          type: string
-          enum:
-          - data
-      required:
-      - data
-      - event
     _problem:
       description: An SSE event of type problem. Data contains a JSON object with given properties.
       properties:
@@ -2537,6 +2508,35 @@ components:
       - data
       - event
     workspaces.serverLogs.get.response:
+      description: An SSE event of type data. Data contains a JSON object with given properties.
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              kind:
+                type: string
+                enum:
+                - E
+                - I
+              data:
+                type: string
+            required:
+            - timestamp
+            - kind
+            - data
+        event:
+          type: string
+          enum:
+          - data
+      required:
+      - data
+      - event
+    workspaces.replicaLogs.get.response:
       description: An SSE event of type data. Data contains a JSON object with given properties.
       properties:
         data:
