@@ -1,0 +1,48 @@
+slug: codesphere
+provider: Codesphere
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Vault
+  spec_file: codesphere-vault-api-openapi.yml
+  capability_id: BC-4210.60
+  capability_id_l1: BC-4210
+  capability_name: Configuration & Secrets Management
+  confidence: 0.85
+  evidence: POST /vault/teams/{teamId}/shared/{vaultName}/secrets — storeSharedSecrets; POST .../generate
+    — generateSharedSecrets; GET .../keys — listSharedSecretKeys
+  reason: The operations store, generate, list and delete secrets scoped to teams and workspaces — plainly
+    management of runtime secrets consumed by deployed services.
+- tag: Workspaces
+  spec_file: codesphere-workspaces-api-openapi.yml
+  capability_id: BC-4210
+  capability_id_l1: BC-4210
+  capability_name: Software Release & Deployment Management
+  confidence: 0.8
+  evidence: POST /workspaces/{workspaceId}/landscape/deploy — deployLandscape; DELETE .../landscape/teardown
+    — teardownLandscape; POST /workspaces/{workspaceId}/pipeline/{stage}/start — startPipelineStage; PATCH
+    .../landscape/scale — scaleLandscapeServices
+  reason: Operations create and manage workspaces, run CI/deploy pipeline stages, deploy and tear down
+    landscapes and scale services — clearly software release and deployment management, but spread across
+    environment management, CI and deployment orchestration so no single L2 is named.
+- tag: managed-services
+  spec_file: codesphere-managed-services-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: 'POST /managed-services create; POST /managed-services/{id}/backups scheduleBackup; vendor:
+    "managed services (PostgreSQL, Valkey, OpenSearch, RabbitMQ, DocumentDB, object stor...)"'
+  reason: The operations provision, update, delete and back up managed infrastructure services (databases,
+    queues, object storage) on a cloud platform — this is cloud/infrastructure resource management, i.e.
+    IT Infrastructure Management, not a business-domain capability.
